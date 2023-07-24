@@ -11,13 +11,13 @@ import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
 import ContextProvider from "./Context";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB1UJSTIdYzKDgayNSRWMlVc_6i6J04Krg",
-  authDomain: "geeks-firebase-72e6d.firebaseapp.com",
-  projectId: "geeks-firebase-72e6d",
-  storageBucket: "geeks-firebase-72e6d.appspot.com",
-  messagingSenderId: "161315790364",
-  appId: "1:161315790364:web:08d050f50f2f75a97149d9",
-  measurementId: "G-ZCNEK8BRJL",
+  apiKey: "AIzaSyBkZdDeKGgnKXzAu-RWrDGQAQBG-x3D334",
+  authDomain: "music-player-final-project.firebaseapp.com",
+  projectId: "music-player-final-project",
+  storageBucket: "music-player-final-project.appspot.com",
+  messagingSenderId: "226920662966",
+  appId: "1:226920662966:web:b556085bc0ad517f436317",
+  measurementId: "G-VJ2MW5G87J"
 };
 
 const app = initializeApp(firebaseConfig);
