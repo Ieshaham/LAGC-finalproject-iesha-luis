@@ -9,7 +9,7 @@ import { auth } from './index';
 import { Context } from './Context';
 import { Navigate } from "react-router-dom";
 import Explore from "./component/Explore.jsx"
-import Landingpage from "./Landingpage-orig"
+import Landingpage from "./component/Landingpage"
 
 const provider = new GoogleAuthProvider();
 

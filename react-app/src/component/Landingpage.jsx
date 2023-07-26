@@ -1,9 +1,8 @@
 import { useEffect, useContext } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import '../App.css';
 import { GoogleAuthProvider, getAuth, signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from './index';
-import { Context } from './Context'
+import { auth } from '../index';
+import { Context } from '../Context'
 
 const provider = new GoogleAuthProvider();
 
