@@ -25,6 +25,7 @@ export default function Explore() {
             <input id="activity" />
 
             <button className="btn-primary">Button</button>
+            <button className="btn-primary">Button</button>
         </div>
 
     )
