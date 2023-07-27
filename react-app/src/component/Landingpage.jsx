@@ -1,5 +1,4 @@
 import { useEffect, useContext } from 'react';
-import '../App.css';
 import { GoogleAuthProvider, getAuth, signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../index';
 import { Context } from '../Context'
@@ -73,6 +72,8 @@ function Landingpage() {
       }}>Sign in</button>
 
       <button onClick={() => auth.signOut()}>Sign out</button>
+      
+      
       </div>
   );
 }
