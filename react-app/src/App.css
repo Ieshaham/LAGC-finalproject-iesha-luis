@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+
+.explorer{
+  margin-top: 50px;
+  margin: 20px;
+  background-color: aliceblue;
+  display: flex;
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+  border: solid gainsboro 1px;
+
+}

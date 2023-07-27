@@ -2,9 +2,9 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Explore from "./component/Explore"
-import ExploreDetail from "./component/Exploredetail"
-import SignIn from "./component/Signin"
-import SignUp from "./component/Signup"
+// import ExploreDetail from "./component/Exploredetail"
+// import SignIn from "./component/Signin"
+// import SignUp from "./component/Signup"
 import Landingpage from "./component/Landingpage"
 
 export default function App() {

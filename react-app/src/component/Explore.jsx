@@ -1,26 +1,30 @@
 
 import React, { useContext, useState } from "react";
+
 import { useNavigate } from "react-router-dom";
+import "../App.css"
 
 // const username  =useState(username,useState );
 export default function Explore() {
     const navigate = useNavigate();
 
     return (
-        <div>
-            <label htmlFor="firstname">First Name
+        
+        <div className="form-group">
+            <label htmlFor="place">Where to go:
             </label>
-            <input id="firstname" />
-            <label htmlFor="lastname">Last Name
+            <input id="place" />
+            <label htmlFor="initialdate">start Date
             </label>
-            <input id="lastname" />
-            <label htmlFor="email">Email
+            <input id="initialdate" />
+            <label htmlFor="endate">End Date
             </label>
-            <input id="email" />
+            <input id="endate" />
+            <label htmlFor="activity">Activity
+            </label>
+            <input id="activity" />
 
-            <label htmlFor="password">password
-            </label>
-            <input id="password" />
+            <button className="btn-primary">Button</button>
         </div>
 
     )
