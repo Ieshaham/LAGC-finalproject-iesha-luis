@@ -4,6 +4,7 @@ import { GoogleAuthProvider, getAuth, signInWithPopup, createUserWithEmailAndPas
 import { auth } from '../index';
 import { Context } from '../Context'
 
+
 const provider = new GoogleAuthProvider();
 
 // provider.setCustomParameters({
@@ -31,6 +32,12 @@ function Landingpage() {
   }, []);
   return (
     <div className="App">
+      <nav className='nav'>
+        <div className='title'>VoyageHawk</div>
+       <button className='login-button'> <a href="#">Login</a></button>
+        </nav>
+      <p className='slogan'>Where your travel dreams take flight!
+      <p className='bottom-slogan'>Your ultimate travel itinerary navigator</p></p>
       <button className='signin' onClick={(e) => {
         signInWithPopup(auth, provider)
           .then(async (result) => {
@@ -72,7 +79,9 @@ function Landingpage() {
         //   .catch((err) => console.error(err))
       }}>Sign in</button>
 
-      <button onClick={() => auth.signOut()}>Sign out</button>
+      <button className='signout' onClick={() => auth.signOut()}>Sign out</button>
+
+ 
       </div>
   );
 }
