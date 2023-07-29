@@ -10,15 +10,16 @@ import { getAuth, connectAuthEmulator } from 'firebase/auth';
 import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
 import ContextProvider from "./Context";
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyBkZdDeKGgnKXzAu-RWrDGQAQBG-x3D334",
-  authDomain: "music-player-final-project.firebaseapp.com",
-  projectId: "music-player-final-project",
-  storageBucket: "music-player-final-project.appspot.com",
-  messagingSenderId: "226920662966",
-  appId: "1:226920662966:web:b556085bc0ad517f436317",
-  measurementId: "G-VJ2MW5G87J"
-};
+    authDomain: "music-player-final-project.firebaseapp.com",
+    projectId: "music-player-final-project",
+    storageBucket: "music-player-final-project.appspot.com",
+    messagingSenderId: "226920662966",
+    appId: "1:226920662966:web:b556085bc0ad517f436317",
+    measurementId: "G-VJ2MW5G87J"
+  };
 
 const app = initializeApp(firebaseConfig);
 const functions = getFunctions(app);
