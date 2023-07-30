@@ -76,7 +76,6 @@ exports.signUpOrSigninUser = onRequest((req, res) => {
         response.status = 500;
       }
     }
-
     res.status(response.status).send(response);
   });
 });
