@@ -38,14 +38,18 @@
 }
 
 
-.explorer{
-  margin-top: 50px;
-  margin: 20px;
-  background-color: aliceblue;
+
+.form-group {
   display: flex;
-  width: 200px;
+  /*position: absolute;*/
+  margin-top: 50px;
+  margin: auto;
+  background: rgb(231,233,235,0.7);
+  width: 600px;
   height: auto;
   border-radius: 10px;
   border: solid gainsboro 1px;
-
+  align-items: center;
+  justify-content: space-between;
+padding: 20px;
 }
