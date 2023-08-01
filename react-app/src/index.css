@@ -21,7 +21,7 @@ code {
 
 
 .signin{
-  background-color: white;
+  background-color: orange;
   color: black;
   height: 45px;
   width: 150px;
@@ -31,6 +31,18 @@ code {
   /* margin-top: 575px; */
   margin-left: 590px;
 
+}
+
+.signin:hover{
+  background-color: orange;
+  color: white;
+  height: 45px;
+  width: 150px;
+  border-radius: 10px;
+  border:black 1px solid;
+  font-size: 25px;
+  /* margin-top: 575px; */
+  margin-left: 590px;
 
 }
 
@@ -60,6 +72,8 @@ margin-top: 0;
 
 .nav{
   background-color: white;
+  display: flex;
+  justify-content: space-between;
 }
 
 .login-button{
@@ -67,5 +81,24 @@ margin-top: 0;
   font-size: 12px;
   border-color: orange;
   height: 35px;
+  margin-top: 5px;
+  margin-right: 10px;
+  width: 75px;
+  border-radius: 6px;
+  font-size: 20px;
   
 }
+
+.hawk{
+  color:orange;
+}
+
+.login-button a{
+  text-decoration: none;
+  color: black;
+}
+.login-button a:hover{
+  text-decoration: none;
+  color: white;
+}
+

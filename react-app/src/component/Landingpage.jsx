@@ -1,7 +1,7 @@
 import { useEffect, useContext } from 'react';
 import { GoogleAuthProvider, getAuth, signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../index';
-import { Context } from '../Context'
+import { Context } from '../Context';
 
 
 const provider = new GoogleAuthProvider();
@@ -32,8 +32,10 @@ function Landingpage() {
   return (
     <div className="App">
       <nav className='nav'>
-        <div className='title'>VoyageHawk</div>
-       <button className='login-button'> <a href="#">Login</a></button>
+      
+        <div className='title'>Voyage<span className='hawk'>Hawk</span></div>
+      
+       <button className='login-button'> <a href="/">Login</a></button>
         </nav>
       <p className='slogan'>Where your travel dreams take flight!
       <p className='bottom-slogan'>Your ultimate travel itinerary navigator</p></p>
@@ -76,9 +78,9 @@ function Landingpage() {
         // createUserWithEmailAndPassword(auth, "elvishernandeztheone@gmail.com", "password")
         //   .then((res) => console.log(res))
         //   .catch((err) => console.error(err))
-      }}>Sign in</button>
+      }}>Sign up</button>
 
-      <button className='signout' onClick={() => auth.signOut()}>Sign out</button>
+      {/* <button className='signout' onClick={() => auth.signOut()}>Sign out</button> */}
 
  
       </div>
