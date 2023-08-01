@@ -29,6 +29,7 @@ connectFunctionsEmulator(functions, "127.0.0.1", 5001);
 connectAuthEmulator(auth, process.env.REACT_APP_FIREBASE_AUTH_HOST);
 connectFirestoreEmulator(firestore, process.env.REACT_APP_FIREBASE_FIRESTORE_HOST);
 
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ContextProvider>
