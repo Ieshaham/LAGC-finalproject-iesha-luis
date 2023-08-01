@@ -60,9 +60,7 @@ function Landingpage() {
 
             const dbUser = await res.json();
 
-
-
-        
+       
             console.log('data: ', dbUser);
             // setUser(dbUser.data);
             // IdP data available using getAdditionalUserInfo(result)
