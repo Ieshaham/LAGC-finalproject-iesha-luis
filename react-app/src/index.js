@@ -31,6 +31,7 @@ connectFirestoreEmulator(
   process.env.REACT_APP_FIREBASE_FIRESTORE_HOST
 );
 
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ContextProvider>
