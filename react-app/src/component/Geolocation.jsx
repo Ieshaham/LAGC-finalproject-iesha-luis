@@ -14,7 +14,6 @@ export default function AddressToLatLngConverter () {
   const [longitude, setLongitude] = useState(null);
 
 
-
   const handleAddressChange = (event) => {
     setAddress(event.target.value);
   };
