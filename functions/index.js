@@ -10,6 +10,7 @@ const admin = initializeApp({ projectId: "geeks-firebase-72e6d" });
 const auth = getAuth(admin);
 const firestore = getFirestore(admin);
 
+
 // Create and deploy your first functions
 // https://firebase.google.com/docs/functions/get-started
 
@@ -89,10 +90,15 @@ exports.getActivities = onRequest((req, res) => {
     };
 
     try {
-      const data= await axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=restaurant&inputtype=textquery&key=${process.env.GOOGLE_PLACES_API_KEY}`);
+
+      const urlEncodedLatLng = encodeURIComponent('25.761681,-80.191788');
+      
+      const data= await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${urlEncodedLatLng}&radius=20000&key=${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`);
       console.log(data.data);
+      console.log(encodeURIComponent('25.761681,-80.191788'))
       response.data = data.data;
     } catch (error) {
+      console.log(encodeURIComponent('25.761681,-80.191788'))
       response.status = 500;
       response.msg = error.message;
     }

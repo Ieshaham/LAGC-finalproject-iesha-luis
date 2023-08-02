@@ -1,24 +1,94 @@
+import { useEffect, useContext } from 'react';
+import React from 'react';
+import '../App.css';
+import { GoogleAuthProvider, getAuth, signInWitcdhPopup, createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../index';
+import { Context } from '../Context';
+import { Navigate } from "react-router-dom";
 
-import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { GoogleAuthProvider, getAuth, signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from './index';
-import { Context } from './Context';
 
-// const username  =useState(username,useState );
-export default function Explore() {
-    const navigate = useNavigate();
+const provider = new GoogleAuthProvider();
 
-    return (
-        <div>
-            <label htmlFor="username">username
-            </label>
-            <input id="username" />
+// provider.setCustomParameters({
+//   redirect_uri: 'https://elvishernandez-didactic-carnival-x5jgw56wqqwf9pvj-9099.preview.app.github.dev/'
+// })
 
-            <label htmlFor="password">password
-            </label>
-            <input id="password" />
-        </div>
+export default function SignIn() {
 
-    )
+  const { setUser } = useContext(Context);
+
+  useEffect(() => {
+
+    (async () => {
+      try {
+        const res = await fetch(`${process.env.REACT_APP_FIREBASE_FUNCTIONS_HOST}/geeks-firebase-72e6d/us-central1/helloworld`);
+        const text = await res.text();
+
+        console.log(text);
+
+      }
+      catch (e) {
+        console.error(e);
+      }
+    })();
+  }, []);
+  return (
+    <div className="App">
+      <div>
+        <label>Username: </label>
+        <input for="Username" ></input>
+      </div>
+      <div>
+        <label>Password: </label>
+        <input for="Password"></input>
+      </div>
+      <button onClick={(e) => {
+        signInWithPopup(auth, provider)
+          .then(async (result) => {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            console.log('token: ', token);
+            console.log('user: ', user);
+
+            const res = await fetch(`${process.env.REACT_APP_FIREBASE_FUNCTIONS_HOST}/geeks-firebase-72e6d/us-central1/signUpOrSigninUser`, {
+              method: 'post',
+              body: JSON.stringify({ email: user.email }),
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            });
+
+            const dbUser = await res.json();
+
+            console.log('data: ', dbUser);
+            // setUser(dbUser.data);
+            // IdP data available using getAdditionalUserInfo(result)
+            // ...
+          }).catch((error) => {
+            console.error(error);
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            // ...
+          });
+        // createUserWithEmailAndPassword(auth, "elvishernandeztheone@gmail.com", "password")
+        //   .then((res) => console.log(res))
+        //   .catch((err) => console.error(err))
+      }}>Sign in</button>
+
+      <button onClick={() => auth.signOut()}>Sign out</button>
+      <button >
+      <Navigate to="../component/Explore.jsx">Activities</Navigate>
+      </button>
+    </div>
+  );
 }
+
+
