@@ -16,7 +16,7 @@ export default function App() {
           <Route path="/signin" element={<SignIn />}></Route>
           <Route path="/geolocation" element={<CityToCoordinatesConverter />}></Route>
           <Route path="/exploredetails" element={<ExploreDetail />}></Route>
-          <Route path="/signup" element={<SignUp />}></Route> */}
+          {/*<Route path="/signup" element={<SignUp />}></Route> */}
         </Routes>
   
     </BrowserRouter>
