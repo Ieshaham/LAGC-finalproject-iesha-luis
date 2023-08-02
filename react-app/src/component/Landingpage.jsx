@@ -35,7 +35,7 @@ function Landingpage() {
       
         <div className='title'>Voyage<span className='hawk'>Hawk</span></div>
       
-       <button className='login-button'> <a href="/">Login</a></button>
+       <button className='login-button'> <a href="/">Home</a></button>
         </nav>
       <p className='slogan'>Where your travel dreams take flight!
       <p className='bottom-slogan'>Your ultimate travel itinerary navigator</p></p>
@@ -79,7 +79,7 @@ function Landingpage() {
         // createUserWithEmailAndPassword(auth, "elvishernandeztheone@gmail.com", "password")
         //   .then((res) => console.log(res))
         //   .catch((err) => console.error(err))
-      }}>Sign up</button>
+      }}>Sign In</button>
 
       {/* <button className='signout' onClick={() => auth.signOut()}>Sign out</button> */}
 
