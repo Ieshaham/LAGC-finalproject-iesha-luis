@@ -1,18 +1,18 @@
+
+Luis Alberto .
+lun, 31 jul, 19:15 (hace 2 días)
+para mí
+
 import React, { useState } from 'react';
-import axios from "axios";
+import axios from 'axios';
 
-console.log('Entering geo function');
-const apiKey = `${process.env.GOOGLE_PLACES_API_KEY}`;
-
-console.log(apiKey);
-const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?key=${apiKey}&address=`;
-console.log(geocodeUrl);
-
-export default function AddressToLatLngConverter () {
+const AddressToLatLngConverter = () => {
   const [address, setAddress] = useState('');
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
 
+  const apiKey = 'YOUR_GOOGLE_MAPS_API_KEY';
+  const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?key=${apiKey}&address=`;
 
   const handleAddressChange = (event) => {
     setAddress(event.target.value);
@@ -40,7 +40,7 @@ export default function AddressToLatLngConverter () {
   };
 
   return (
-    <div className='form-group'>
+    <div>
       <input type="text" value={address} onChange={handleAddressChange} />
       <button onClick={convertToLatLng}>Convert</button>
       {latitude && longitude && (
@@ -51,3 +51,5 @@ export default function AddressToLatLngConverter () {
     </div>
   );
 };
+
+export default AddressToLatLngConverter;
