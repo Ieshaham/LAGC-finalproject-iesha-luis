@@ -5,6 +5,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-image: url("https://4kwallpapers.com/images/wallpapers/coastline-aerial-view-above-clouds-seascape-mountains-macos-5120x2880-3995.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0; */
+}
+.landingpage{
   background-image: url("https://4kwallpapers.com/images/wallpapers/coastline-aerial-view-above-clouds-seascape-mountains-macos-5120x2880-3995.jpg");
   background-repeat: no-repeat;
   background-position: center center;
@@ -12,7 +21,12 @@ body {
   background-attachment: fixed;
   margin: 0;
   padding: 0;
+  height: 100vh;
+  width: 100%;
 }
+
+
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -100,5 +114,9 @@ margin-top: 0;
 .login-button a:hover{
   text-decoration: none;
   color: white;
+}
+
+.exploredetail{
+  background-color: white;
 }
 

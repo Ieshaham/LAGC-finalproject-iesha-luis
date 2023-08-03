@@ -17,6 +17,7 @@ export default function App() {
           <Route path="/geolocation" element={<CityToLatLngConverter />}></Route>
           {/* <Route path="/exploredetail" element={<ExploreDetail />}></Route> */}
           {/*<Route path="/signup" element={<SignUp />}></Route> */}
+
         </Routes>
   
     </BrowserRouter>
