@@ -40,6 +40,38 @@ const CityToLatLngConverter = () => {
       .catch((error) => {
         console.error("Error fetching data: ", error);
       });
+
+
+      const geocodeApiUrl2 =`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${setLatitude},${setLongitude}&radius=Autocomplete`;
+      console.log(apiKey);
+      console.log(geocodeApiUrl2);
+axios
+      .get(geocodeApiUrl2)
+     .then((response) => {
+        if (response.data.results.length > 0) {
+       } else {
+         console.log("Answer not found.");
+         }
+         })
+         .catch((error) => {
+           console.error("Error fetching data: ", error);
+           });
+           
+           {/*var axios = require('axios');
+               var config = {
+                 method: 'GET',
+                 url: geocodeApiUrl2,
+                 headers: { }
+               };
+               console.log('gettin Answer');
+               
+               axios(config)
+               .then(function (response) {
+                 console.log(JSON.stringify(response.data));
+               })
+               .catch(function (error) {
+                 console.log(error);
+               });*/}
   };
 
   return (
