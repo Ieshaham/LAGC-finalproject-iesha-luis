@@ -1,7 +1,5 @@
 
-Luis Alberto .
-lun, 31 jul, 19:15 (hace 2 días)
-para mí
+
 
 import React, { useState } from 'react';
 import axios from 'axios';

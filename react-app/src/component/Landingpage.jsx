@@ -30,6 +30,7 @@ function Landingpage() {
     })();
   }, []);
   return (
+    <div className="landingpage">
     <div className="App">
       <nav className='nav'>
       
@@ -84,6 +85,7 @@ function Landingpage() {
       {/* <button className='signout' onClick={() => auth.signOut()}>Sign out</button> */}
 
  
+      </div>
       </div>
   );
 }
