@@ -8,6 +8,7 @@ const backendHostUrl = `${process.env.REACT_APP_FIREBASE_FUNCTIONS_HOST}/geeks-f
 // const backendHostUrl ="https://lugras-fluffy-space-computing-machine-vw5pw6v769qhw64g-3000.preview.app.github.dev";
 
 export default function Explore() {
+  
    const [temp, setTemp] = useState(0);
   // const [lowtemp, setLowTemp] = useState(0);
   // const [conditionicon, setConditionIcon] = useState("");
