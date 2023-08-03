@@ -1,9 +1,17 @@
-
+import React, { useState } from "react";
 import "../App.css";
 // import React, { useState } from 'react';
 // import axios from 'axios';
 
+export default function ExploreDetail(){
 
-<div className="details">
+
     
-</div>
+    return (
+    
+        <div className="details">
+            
+        </div>
+    
+    );
+};
