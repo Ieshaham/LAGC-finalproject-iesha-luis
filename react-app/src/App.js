@@ -7,8 +7,7 @@ import SignIn from "./component/Signin"
 import CityToCoordinatesConverter from "./component/Geolocation"
 import ExploreDetail from "./component/Exploredetail"
 // import SignUp from "./component/Signup"
-
-
+import ExploreDetail from "./component/Exploredetail"
 
 export default function App() {
   return (
@@ -17,11 +16,9 @@ export default function App() {
           <Route path="/" element={<Landingpage />}></Route>
           <Route path="/explore" element={<Explore />}></Route>
           <Route path="/signin" element={<SignIn />}></Route>
-
-          <Route path="/geolocation" element={<CityToCoordinatesConverter />}></Route>
+          <Route path="/geolocation" element={<CityToLatLngConverter />}></Route>
           <Route path="/exploredetail" element={<ExploreDetail />}></Route>
-         {/*} <Route path="/signup" element={<SignUp />}></Route> */}
-
+          {/*<Route path="/signup" element={<SignUp />}></Route> */}
         </Routes>
   
     </BrowserRouter>
