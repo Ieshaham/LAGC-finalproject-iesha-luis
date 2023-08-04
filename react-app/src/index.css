@@ -70,7 +70,7 @@ code {
 .bottom-slogan{
   color: white;
   font-size: 25px;
-  /* margin-bottom: 15px; */
+  /* margin-bottom: 15px;  */
 margin-right: 375px;
 margin-top: 0;
 }
@@ -90,6 +90,7 @@ margin-top: 0;
   justify-content: space-between;
 }
 
+
 .login-button{
   background-color: orange;
   font-size: 12px;
@@ -102,6 +103,28 @@ margin-top: 0;
   font-size: 20px;
   
 }
+
+.explore-button{
+  background-color: orange;
+  font-size: 12px;
+  border-color: orange;
+  height: 35px;
+  margin-top: 5px;
+  margin-right: 10px;
+  width: 80px;
+  border-radius: 6px;
+  font-size: 20px;
+}
+
+.explore-button a:hover{
+    text-decoration: none;
+    color: white;
+  }
+.explore-button a{
+  text-decoration: none;
+  color: black;
+}
+
 
 .hawk{
   color:orange;
@@ -120,3 +143,44 @@ margin-top: 0;
   background-color: white;
 }
 
+.nav-buttons{
+  justify-content: end;
+}
+
+.orangesquare{
+  background-color: rgb(248, 211, 143);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  
+  
+}
+
+.whitebox{
+  background-color: white;
+  height: 100%;
+  width:75%;
+  margin-left: 200px;
+  z-index: 15;
+  position: relative;
+
+}
+
+.back{
+  margin-top: 100px;
+  background-color: orange;
+  font-size: 12px;
+  border-color: orange;
+  height: 35px;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: 100px;
+  border-radius: 6px;
+  font-size: 20px;
+}
+
+
+.carousel-inner{
+  height: 300px;
+  width: 300px;
+}
