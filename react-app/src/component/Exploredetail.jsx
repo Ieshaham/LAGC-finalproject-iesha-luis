@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 export default function ExploreDetail(){
 
 
-    
   
 
  return (
@@ -56,3 +55,4 @@ export default function ExploreDetail(){
       </div>
 </div>);
 }
+
