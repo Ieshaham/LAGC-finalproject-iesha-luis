@@ -83,24 +83,66 @@ exports.signUpOrSigninUser = onRequest((req, res) => {
 
 exports.getActivities = onRequest((req, res) => {
   cors(req, res, async () => {
+    const {lat,lng} = req.body
     const response = {
       msg: "Succes retrieve activities",
       data: {},
       status: 200,
     };
+    if (!lat || !lng){
+      response.msg= "Coordinates were not passed"
+      response.status= 500
+    }
+    if(response.status===200){
 
     try {
 
-      const urlEncodedLatLng = encodeURIComponent('25.761681,-80.191788');
+      const urlEncodedLatLng = encodeURIComponent(`${lat},${lng}`);
       
       const data= await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${urlEncodedLatLng}&radius=20000&key=${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`);
       console.log(data.data);
-      console.log(encodeURIComponent('25.761681,-80.191788'))
+      console.log(encodeURIComponent(`${lat},${lng}`))
       response.data = data.data;
     } catch (error) {
-      console.log(encodeURIComponent('25.761681,-80.191788'))
+      console.log(encodeURIComponent(`${lat},${lng}`))
       response.status = 500;
       response.msg = error.message;
+    }
+  }
+    res.status(response.status).send(response);
+  });
+
+
+
+});
+
+
+exports.getCoordinates = onRequest((req, res) => {
+  cors(req, res, async () => {
+    //const city = req.body.city
+  const {city} = req.body
+    const response = {
+      msg: "Succes retrieve coordinates",
+      data: {},
+      status: 200,
+    };
+    if (!city){
+      response.msg= "City was not pass"
+      response.status= 500
+    }
+    if(response.status===200){
+      try {
+        
+        const apiKey = `${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`;
+        const data= await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${apiKey}`);
+        
+        
+        response.data = data.data;
+      } catch (error) {
+        
+        response.status = 500;
+        response.msg = error.message;
+      }
     }
 
     res.status(response.status).send(response);

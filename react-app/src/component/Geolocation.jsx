@@ -1,14 +1,12 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import { CityToLatLngConverter } from './Geolocation';
 
-
-export default function CityToLatLngConverter  () {
+export default function CityToLatLngConverter() {
   const [city, setCity] = useState("");
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
-  let latiduds=0;
-  let longituds=0;
+  let latiduds = 0;
+  let longituds = 0;
 
   const backendHostUrl = `${process.env.REACT_APP_FIREBASE_FUNCTIONS_HOST}/geeks-firebase-72e6d/us-central1`;
 
@@ -16,14 +14,37 @@ export default function CityToLatLngConverter  () {
     setCity(event.target.value);
   };
 
-  const getLatLng = () => {
-    const apiKey = `${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`;
+  const getLatLng = async () => {
+    /*} const apiKey = `${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`;
     //const apiKey = `AIzaSyBkZdDeKGgnKXzAu-RWrDGQAQBG-x3D334`;
-    const geocodeApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${apiKey}`;
-    console.log(city);
-    console.log(apiKey);
-    console.log(geocodeApiUrl);
+  const geocodeApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${apiKey}`;*/
 
+    const res = await fetch(`${backendHostUrl}/getCoordinates`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ city }),
+    });
+
+    const data = await res.json();
+    console.log(data);
+    console.log(data.city);
+    console.log(city);
+    const {lat,lng } = data.data.results[0].geometry.location;
+
+    const activityRes = await fetch(`${backendHostUrl}/getActivities`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ lat, lng }),
+    });
+
+   const placesData = await activityRes.json();
+    console.log(placesData);
+ 
+    /*
     axios
       .get(geocodeApiUrl)
       .then((response) => {
@@ -36,18 +57,11 @@ export default function CityToLatLngConverter  () {
           console.log(latiduds);
           console.log(longituds);
           
-          const geocodeApiUrl2 =`https://maps.googleapis.com/maps/api/place/nearbysearch/json?inpu=${city}&types=establishment&location=${latiduds},${longituds}&radius=5000&key=${apiKey}`;
-          console.log(apiKey);
-          console.log(geocodeApiUrl2);
+          
     axios
           .get(geocodeApiUrl2)
          .then((response) => {
             if (response.data.results.length > 0) {
-
-              {/*const [hours, setHours] = useState([]);
-  
-              useEffect(() => {
-              }, []);*/}
               
               
               (async () => {
@@ -77,7 +91,7 @@ export default function CityToLatLngConverter  () {
         console.error("Error fetching data: ", error);
       });
 
-
+*/
   };
 
   return (
@@ -98,6 +112,4 @@ export default function CityToLatLngConverter  () {
       )}
     </div>
   );
-};
-
-//export default CityToLatLngConverter;
+}
