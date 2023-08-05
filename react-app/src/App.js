@@ -4,11 +4,11 @@ import Landingpage from "./component/Landingpage"
 import Explore from "./component/Explore"
 import SignIn from "./component/Signin"
 
-import CityToCoordinatesConverter from "./component/Geolocation"
+
 import ExploreDetail from "./component/Exploredetail"
 import CityToLatLngConverter from './component/Geolocation';
 // import SignUp from "./component/Signup"
-import ExploreDetail from "./component/Exploredetail"
+
 
 export default function App() {
   return (

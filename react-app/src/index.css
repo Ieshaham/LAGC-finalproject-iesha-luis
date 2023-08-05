@@ -130,7 +130,7 @@ margin-top: 0;
   color:orange;
 }
 
-.login-button a{
+.login-button .whitebox{
   text-decoration: none;
   color: black;
 }
