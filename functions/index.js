@@ -136,7 +136,7 @@ exports.getCoordinates = onRequest((req, res) => {
         const apiKey = `${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`;
         const data= await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${apiKey}`);
         
-        
+        console.log(data);
         response.data = data.data;
       } catch (error) {
         
