@@ -7,13 +7,14 @@ export default function CityToLatLngConverter() {
   const [longitude, setLongitude] = useState("");
   let latiduds = 0;
   let longituds = 0;
+  console.log(latiduds, longituds);
 
   const backendHostUrl = `${process.env.REACT_APP_FIREBASE_FUNCTIONS_HOST}/geeks-firebase-72e6d/us-central1`;
 
   const handleCityChange = (event) => {
     setCity(event.target.value);
   };
-
+console.log(latitude, longitude);
   const getLatLng = async () => {
     /*} const apiKey = `${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`;
     //const apiKey = `AIzaSyBkZdDeKGgnKXzAu-RWrDGQAQBG-x3D334`;
