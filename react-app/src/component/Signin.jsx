@@ -1,7 +1,7 @@
 import { useEffect, useContext } from 'react';
 import React from 'react';
 import '../App.css';
-import { GoogleAuthProvider, getAuth, signInWitcdhPopup, createUserWithEmailAndPassword } from "firebase/auth";
+import { GoogleAuthProvider, getAuth, signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../index';
 import { Context } from '../Context';
 import { Navigate } from "react-router-dom";
@@ -85,7 +85,7 @@ export default function SignIn() {
 
       <button onClick={() => auth.signOut()}>Sign out</button>
       <button >
-      <Navigate to="../component/Explore.jsx">Activities</Navigate>
+        <Navigate to="../component/Explore.jsx">Activities</Navigate>
       </button>
     </div>
   );

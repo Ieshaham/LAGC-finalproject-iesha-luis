@@ -7,21 +7,23 @@ import SignIn from "./component/Signin"
 
 import ExploreDetail from "./component/Exploredetail"
 import CityToLatLngConverter from './component/Geolocation';
+import PhotoGallery from './component/PhotoGallery';
 // import SignUp from "./component/Signup"
 
 
 export default function App() {
   return (
     <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Landingpage />}></Route>
-          <Route path="/explore" element={<Explore />}></Route>
-          <Route path="/signin" element={<SignIn />}></Route>
-          <Route path="/geolocation" element={<CityToLatLngConverter />}></Route>
-          <Route path="/exploredetail" element={<ExploreDetail />}></Route>
-          {/*<Route path="/signup" element={<SignUp />}></Route> */}
-        </Routes>
-  
+      <Routes>
+        <Route path="/" element={<Landingpage />}></Route>
+        <Route path="/explore" element={<Explore />}></Route>
+        <Route path="/signin" element={<SignIn />}></Route>
+        <Route path="/geolocation" element={<CityToLatLngConverter />}></Route>
+        <Route path="/exploredetail" element={<ExploreDetail />}></Route>
+        <Route path="/exploredetail" element={<PhotoGallery />}></Route>
+        {/*<Route path="/signup" element={<SignUp />}></Route> */}
+      </Routes>
+
     </BrowserRouter>
   );
 }

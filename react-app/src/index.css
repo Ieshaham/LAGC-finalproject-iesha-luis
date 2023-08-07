@@ -13,7 +13,8 @@ body {
   margin: 0;
   padding: 0; */
 }
-.landingpage{
+
+.landingpage {
   background-image: url("https://4kwallpapers.com/images/wallpapers/coastline-aerial-view-above-clouds-seascape-mountains-macos-5120x2880-3995.jpg");
   background-repeat: no-repeat;
   background-position: center center;
@@ -34,49 +35,49 @@ code {
 }
 
 
-.signin{
+.signin {
   background-color: orange;
   color: black;
   height: 45px;
   width: 150px;
   border-radius: 10px;
-  border:black 1px solid;
+  border: black 1px solid;
   font-size: 25px;
   /* margin-top: 575px; */
   margin-left: 590px;
 
 }
 
-.signin:hover{
+.signin:hover {
   background-color: orange;
   color: white;
   height: 45px;
   width: 150px;
   border-radius: 10px;
-  border:black 1px solid;
+  border: black 1px solid;
   font-size: 25px;
   /* margin-top: 575px; */
   margin-left: 590px;
 
 }
 
-.slogan{
+.slogan {
   color: white;
   font-size: 50px;
   margin-top: 570px;
   margin-left: 650px;
 }
 
-.bottom-slogan{
+.bottom-slogan {
   color: white;
   font-size: 25px;
   /* margin-bottom: 15px;  */
-margin-right: 375px;
-margin-top: 0;
+  margin-right: 375px;
+  margin-top: 0;
 }
 
-.title{
-  color:black;
+.title {
+  color: black;
   font-size: 25px;
   display: flex;
   align-items: start;
@@ -84,14 +85,14 @@ margin-top: 0;
   margin-left: 10px;
 }
 
-.nav{
+.nav {
   background-color: white;
   display: flex;
   justify-content: space-between;
 }
 
 
-.login-button{
+.login-button {
   background-color: orange;
   font-size: 12px;
   border-color: orange;
@@ -101,10 +102,10 @@ margin-top: 0;
   width: 75px;
   border-radius: 6px;
   font-size: 20px;
-  
+
 }
 
-.explore-button{
+.explore-button {
   background-color: orange;
   font-size: 12px;
   border-color: orange;
@@ -116,57 +117,59 @@ margin-top: 0;
   font-size: 20px;
 }
 
-.explore-button a:hover{
-    text-decoration: none;
-    color: white;
-  }
-.explore-button a{
-  text-decoration: none;
-  color: black;
-}
-
-
-.hawk{
-  color:orange;
-}
-
-.login-button .whitebox{
-  text-decoration: none;
-  color: black;
-}
-.login-button a:hover{
+.explore-button a:hover {
   text-decoration: none;
   color: white;
 }
 
-.exploredetail{
+.explore-button a {
+  text-decoration: none;
+  color: black;
+}
+
+
+.hawk {
+  color: orange;
+}
+
+.login-button .whitebox {
+  text-decoration: none;
+  color: black;
+}
+
+.login-button a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.exploredetail {
   background-color: white;
 }
 
-.nav-buttons{
+.nav-buttons {
   justify-content: end;
 }
 
-.orangesquare{
+.orangesquare {
   background-color: rgb(248, 211, 143);
   height: 100%;
   width: 100%;
   position: absolute;
-  
-  
+
+
 }
 
-.whitebox{
+.whitebox {
   background-color: white;
   height: 100%;
-  width:75%;
+  width: 75%;
   margin-left: 200px;
   z-index: 15;
   position: relative;
 
 }
 
-.back{
+.back {
   margin-top: 100px;
   background-color: orange;
   font-size: 12px;
@@ -180,7 +183,7 @@ margin-top: 0;
 }
 
 
-.carousel-inner{
+.carousel-inner {
   height: 300px;
   width: 300px;
 }
