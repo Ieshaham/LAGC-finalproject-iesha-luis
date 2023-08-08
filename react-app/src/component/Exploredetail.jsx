@@ -1,4 +1,5 @@
 
+
 import "../App.css";
 import React, { useState} from 'react';
 
@@ -22,6 +23,7 @@ const ExploreDetail = () => {
 
   const getLatLng = async () => {
 
+
     const res = await fetch(`${backendHostUrl}/getCoordinates`, {
       method: "POST",
       headers: {
@@ -29,6 +31,7 @@ const ExploreDetail = () => {
       },
       body: JSON.stringify({ city }),
     });
+
 
     const data = await res.json();
     console.log(data);
@@ -53,6 +56,7 @@ const ExploreDetail = () => {
   return (
 
 
+
       <div className="form-group">
         <input
           type="text"
@@ -75,3 +79,4 @@ const ExploreDetail = () => {
     );
   }
   export default ExploreDetail;
+
