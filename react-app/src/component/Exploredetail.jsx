@@ -1,33 +1,77 @@
-import React from "react";
+
 import "../App.css";
-import { Link } from 'react-router-dom';
-import PhotoGallery from './PhotoGallery';
+import React, { useState} from 'react';
 
 
+const backendHostUrl = `${process.env.REACT_APP_FIREBASE_FUNCTIONS_HOST}/geeks-firebase-72e6d/us-central1`;
 
-function ExploreDetail() {
+const ExploreDetail = () => {
+  const [city,setCity]= useState("")
+  const[photos,setPhotos]=useState("")
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
+  let latiduds = 0;
+  let longituds = 0;
+  
+
+  const handleCityChange = (event) => {
+    setCity(event.target.value);
+    setPhotos(event.target.value);
+  };
+
+
+  const getLatLng = async () => {
+
+    const res = await fetch(`${backendHostUrl}/getCoordinates`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ city }),
+    });
+
+    const data = await res.json();
+    console.log(data);
+    console.log(data.city);
+
+   const { photos } = data.data.results[0].geometry.photos[0];
+  setPhotos(photos); 
+    const { lat, lng } = data.data.results[0].geometry.location;
+
+    const activityRes = await fetch(`${backendHostUrl}/getActivities`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ lat, lng }),
+    });
+
+    const placesData = await activityRes.json();
+    console.log(placesData);
+  };
+
   return (
-    <>
-      <div className="details">
-        <nav className='nav'>
-          <div className='title'>Voyage<span className='hawk'>Hawk</span></div>
-          <div className="nav-buttons">
-            <button className='explore-button'> <a href="/explore">Explore</a></button>
-            <Link to="/" className='login-button'>
-              Home
-            </Link>
+
+
+      <div className="form-group">
+        <input
+          type="text"
+          placeholder="Enter city name"
+          value={city}
+          onChange={handleCityChange}
+        />
+        <button onClick={getLatLng}>Get Latitude and Longitude</button>
+        {latitude && longitude && (
+          <div>
+            Latitude: {latitude}
+            <br />
+            Longitude: {longitude}
+          <div className="placename">value:{photos}
+            </div>
           </div>
-        </nav>
-        <div className="orangesquare">
-          <div className="whitebox">
-            <Link to="/explore" className="back">
-              Go back
-            </Link>
-            {<PhotoGallery />}
-          </div>
-        </div>
+          
+        )}
       </div>
-    </>
-  );
-}
-export default ExploreDetail;
+    );
+  }
+  export default ExploreDetail;
