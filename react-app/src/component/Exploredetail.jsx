@@ -8,7 +8,7 @@ const backendHostUrl = `${process.env.REACT_APP_FIREBASE_FUNCTIONS_HOST}/geeks-f
 
 const ExploreDetail = () => {
   const [city,setCity]= useState("")
-  const[photos,setPhotos]=useState("")
+  
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
   let latiduds = 0;
@@ -17,7 +17,7 @@ const ExploreDetail = () => {
 
   const handleCityChange = (event) => {
     setCity(event.target.value);
-    setPhotos(event.target.value);
+  
   };
 
 
@@ -37,8 +37,7 @@ const ExploreDetail = () => {
     console.log(data);
     console.log(data.city);
 
-   const { photos } = data.data.results[0].geometry.photos[0];
-  setPhotos(photos); 
+ 
     const { lat, lng } = data.data.results[0].geometry.location;
 
     const activityRes = await fetch(`${backendHostUrl}/getActivities`, {
@@ -70,8 +69,7 @@ const ExploreDetail = () => {
             Latitude: {latitude}
             <br />
             Longitude: {longitude}
-          <div className="placename">value:{photos}
-            </div>
+          
           </div>
           
         )}
