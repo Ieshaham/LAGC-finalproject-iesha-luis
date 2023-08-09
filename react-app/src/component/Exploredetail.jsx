@@ -1,20 +1,28 @@
-import React, { useState, useEffect } from 'react';
+
+
+import "../App.css";
+import React, { useState} from 'react';
+
 
 const backendHostUrl = `${process.env.REACT_APP_FIREBASE_FUNCTIONS_HOST}/geeks-firebase-72e6d/us-central1`;
 
 const ExploreDetail = () => {
   const [city,setCity]= useState("")
+  
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
   let latiduds = 0;
   let longituds = 0;
+  
 
   const handleCityChange = (event) => {
     setCity(event.target.value);
+  
   };
 
 
   const getLatLng = async () => {
+
 
     const res = await fetch(`${backendHostUrl}/getCoordinates`, {
       method: "POST",
@@ -24,10 +32,12 @@ const ExploreDetail = () => {
       body: JSON.stringify({ city }),
     });
 
+
     const data = await res.json();
     console.log(data);
     console.log(data.city);
-    console.log(city);
+
+ 
     const { lat, lng } = data.data.results[0].geometry.location;
 
     const activityRes = await fetch(`${backendHostUrl}/getActivities`, {
@@ -42,24 +52,65 @@ const ExploreDetail = () => {
     console.log(placesData);
   };
 
-
   return (
-    <div className="form-group">
-      <input
-        type="text"
-        placeholder="Enter city name"
-        value={city}
-        onChange={handleCityChange}
-      />
-      <button onClick={getLatLng}>Get Latitude and Longitude</button>
-      {latitude && longitude && (
-        <div>
-          Latitude: {latitude}
-          <br />
-          Longitude: {longitude}
-        </div>
-      )}
-    </div>
-  );
-}
-export default ExploreDetail;
+
+
+
+      <div className="form-group">
+        <input
+          type="text"
+          placeholder="Enter city name"
+          value={city}
+          onChange={handleCityChange}
+        />
+        <button onClick={getLatLng}>Get Latitude and Longitude</button>
+        {latitude && longitude && (
+          <div>
+            Latitude: {latitude}
+            <br />
+            Longitude: {longitude}
+          
+          </div>
+          
+        )}
+      </div>
+    );
+  }
+  export default ExploreDetail;
+
+
+
+
+
+// import React, { useState, useEffect } from 'react';
+
+// import List from './List'; // Assuming you have a List component
+
+// const App = () => {
+//   const [places, setPlaces] = useState([]);
+//   const apiKey = process.env.REACT_APP_GOOGLE_PLACES_API_KEY;
+
+//   useEffect(() => {
+//     async function fetchPlaces() {
+//       try {
+//         const response = await fetch(`https://maps.googleapis.com/places/api/js?key=${apiKey}`);
+//         setPlaces(response.data.results);
+//       } catch (error) {
+//         console.error('Error fetching places:', error);
+//       }
+//     }
+
+//     fetchPlaces();
+//   }, []);
+
+//   return (
+//     <div>
+//       <List places={places} />
+//     </div>
+//   );
+// };
+
+// export default App;
+
+
+  
