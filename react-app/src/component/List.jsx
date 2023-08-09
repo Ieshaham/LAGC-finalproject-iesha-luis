@@ -16,3 +16,4 @@ const List = ({ places }) => (
 );
 
 export default List;
+
