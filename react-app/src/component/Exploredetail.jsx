@@ -78,3 +78,39 @@ const ExploreDetail = () => {
   }
   export default ExploreDetail;
 
+
+
+
+
+// import React, { useState, useEffect } from 'react';
+
+// import List from './List'; // Assuming you have a List component
+
+// const App = () => {
+//   const [places, setPlaces] = useState([]);
+//   const apiKey = process.env.REACT_APP_GOOGLE_PLACES_API_KEY;
+
+//   useEffect(() => {
+//     async function fetchPlaces() {
+//       try {
+//         const response = await fetch(`https://maps.googleapis.com/places/api/js?key=${apiKey}`);
+//         setPlaces(response.data.results);
+//       } catch (error) {
+//         console.error('Error fetching places:', error);
+//       }
+//     }
+
+//     fetchPlaces();
+//   }, []);
+
+//   return (
+//     <div>
+//       <List places={places} />
+//     </div>
+//   );
+// };
+
+// export default App;
+
+
+  
