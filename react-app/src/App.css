@@ -40,7 +40,7 @@
 
 
 .form-group {
-  display: flex;
+  /*display: flex;*/
   /*position: absolute;*/
   margin-top: 50px;
   margin: auto;
@@ -52,4 +52,16 @@
   align-items: center;
   justify-content: space-between;
 padding: 20px;
+}
+.results{
+  border: solid gainsboro 1px;
+  background: gray;
+}
+
+.table{
+  border: solid black;
+
+}
+.title{
+  font: bold;
 }
