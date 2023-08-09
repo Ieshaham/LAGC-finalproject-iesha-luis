@@ -74,7 +74,7 @@ function Home() {
     });
   };
 
-  return <div id="map" style={{ width: "100%", height: "567px" }}>
+  return <div id="map" style={{ width: "100%", height: "565px" }}>
     
   </div>;
 }
