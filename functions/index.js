@@ -99,7 +99,7 @@ exports.getActivities = onRequest((req, res) => {
 
       const urlEncodedLatLng = encodeURIComponent(`${lat},${lng}`);
       
-      const data= await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${urlEncodedLatLng}&radius=20000&key=${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`);
+      const data= await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${urlEncodedLatLng}&radius=50000&key=${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`);
       console.log(data.data);
       console.log(encodeURIComponent(`${lat},${lng}`))
       response.data = data.data;
@@ -135,7 +135,6 @@ exports.getCoordinates = onRequest((req, res) => {
         
         const apiKey = `${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`;
         const data= await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${apiKey}`);
-        
         console.log(data);
         response.data = data.data;
       } catch (error) {
