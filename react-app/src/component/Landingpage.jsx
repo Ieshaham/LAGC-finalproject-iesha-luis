@@ -4,6 +4,7 @@ import { auth } from '../index';
 import { Context } from '../Context';
 
 
+
 const provider = new GoogleAuthProvider();
 
 // provider.setCustomParameters({
@@ -32,17 +33,12 @@ function Landingpage() {
   return (
     <div className="landingpage">
     <div className="App">
-      <nav className='nav'>
-      
-        <div className='title'>Voyage<span className='hawk'>Hawk</span></div>
-      
-       <button className='login-button'> <a href="/">Home</a></button>
-        </nav>
-      <p className='slogan'>Where your travel dreams take flight!
-      <p className='bottom-slogan'>Your ultimate travel itinerary navigator</p></p>
+      <div className="slogans">
+      <p className='slogan'>Where your travel dreams take flight!</p>
+      <p className='bottom-slogan'>Your ultimate travel itinerary navigator</p>
       <button className='signin' onClick={(e) => {
         signInWithPopup(auth, provider)
-          .then(async (result) => {
+        .then(async (result) => {
             // This gives you a Google Access Token. You can use it to access the Google API.
             const credential = GoogleAuthProvider.credentialFromResult(result);
             const token = credential.accessToken;
@@ -50,7 +46,7 @@ function Landingpage() {
             const user = result.user;
             console.log('token: ', token);
             console.log('user: ', user);
-
+            
             const res = await fetch(`${process.env.REACT_APP_FIREBASE_FUNCTIONS_HOST}/geeks-firebase-72e6d/us-central1/signUpOrSigninUser`, {
               method: 'post',
               body: JSON.stringify({ email: user.email }),
@@ -58,10 +54,10 @@ function Landingpage() {
                 'Content-Type': 'application/json'
               }
             });
-
+            
             const dbUser = await res.json();
-
-       
+            
+            
             console.log('data: ', dbUser);
             // setUser(dbUser.data);
             // IdP data available using getAdditionalUserInfo(result)
@@ -77,13 +73,14 @@ function Landingpage() {
             const credential = GoogleAuthProvider.credentialFromError(error);
             // ...
           });
-        // createUserWithEmailAndPassword(auth, "elvishernandeztheone@gmail.com", "password")
-        //   .then((res) => console.log(res))
-        //   .catch((err) => console.error(err))
-      }}>Sign In</button>
+          // createUserWithEmailAndPassword(auth, "elvishernandeztheone@gmail.com", "password")
+          //   .then((res) => console.log(res))
+          //   .catch((err) => console.error(err))
+        }}>Sign In</button>
 
       {/* <button className='signout' onClick={() => auth.signOut()}>Sign out</button> */}
 
+        </div>
  
       </div>
       </div>
