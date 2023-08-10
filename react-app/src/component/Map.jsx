@@ -46,6 +46,7 @@
 
 import React, { useEffect } from "react";
 
+
 function Home() {
   useEffect(() => {
     loadMap();
@@ -74,10 +75,14 @@ function Home() {
     });
   };
 
-  return <div id="map" style={{ width: "100%", height: "565px" }}>
+  return (
+  <div>
     
+  <div id="map" style={{ width: "100%", height: "565px" }}>
+   
   </div>;
-}
+  </div>
+)}
 
 export default Home;
 
