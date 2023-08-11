@@ -1,53 +1,14 @@
-// import React, { useEffect, useState } from 'react';
 
-// const backendHostUrl = `${process.env.REACT_APP_FIREBASE_FUNCTIONS_HOST}/geeks-firebase-72e6d/us-central1`;
 
-// export default function PhotoGallery() {
-//   const [photoUrl, setPhotoUrl] = useState(null); // Initialize with null
-//   const photoReference = "AUacShi-EdVlA6WEnDtPcqNXMIsADOb-ArH86roncdUVNTLTHSwltk9ohOweP4eNIuYjfEcAT5hx605p0n-z48EWhbcKCTCFV27lu45nVfBXpPF23QvkR1GtNaXTMP9pFdBGU8RyE5gtNHSVPQTbuiXxL8h09YJNeyWtP4MgJb-sDpWTHH8";
-//   const apiKey = `${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`;
-//   const maxWidth = 4128;
+import React, { useEffect, useState } from "react";
 
-//   useEffect(() => {
-//     const fetchPhoto = async () => { // Correct the async function definition
-//       try {
-//         const res = await fetch(`${backendHostUrl}/getPhotos`);
-//         const data = await res.json();
-//         console.log(data);
-//         console.log("the res: ", data);
-
-//         const photoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=${maxWidth}&photoreference=${photoReference}&key=${apiKey}`;
-
-//         const response = await fetch(photoUrl);
-//         if (response.ok) {
-//           const blob = await response.blob();
-//           const photoUrl = URL.createObjectURL(blob);
-//           setPhotoUrl(photoUrl);
-//         } else {
-//           console.error('Error fetching photo:', response.statusText);
-//         }
-//       } catch (error) {
-//         console.error('Error fetching photos:', error);
-//       }
-//     };
-
-//     fetchPhoto();
-//   }, [apiKey]); // Empty dependency array to run the effect only once
-
-//   return (
-//     <div>
-//       <h1 className='photo'>Photo Gallery</h1>
-//       <div className="photo-list">
-//         {photoUrl && <img src={photoUrl} alt="Place" />}
-//       </div>
-//     </div>
-//   );
-// }
-
-import React, { useEffect } from "react";
 
 
 function Home() {
+  const [selectedPlace, setSelectedPlace] = useState(null);
+  const [autocompleteValue, setAutocompleteValue] = useState("");
+  const [autocompleteSuggestions, setAutocompleteSuggestions] = useState([]);
+
   useEffect(() => {
     loadMap();
   }, []);
@@ -55,7 +16,7 @@ function Home() {
   const loadMap = () => {
     const googleMapsApiKey = process.env.REACT_APP_GOOGLE_PLACES_API_KEY;
     const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&libraries=places`;
     script.async = true;
     script.onload = initMap;
     document.head.appendChild(script);
@@ -67,26 +28,137 @@ function Home() {
       zoom: 10,
     };
 
-    const map = new window.google.maps.Map(document.getElementById("map"), mapOptions);
+    const map = new window.google.maps.Map(
+      document.getElementById("map"),
+      mapOptions
+    );
 
-    new window.google.maps.Marker({
-      position: { lat: 25.7616798, lng: -80.1917902 },
-      map: map,
+    const searchBox = new window.google.maps.places.SearchBox(
+      document.getElementById("search-box")
+    );
+
+    map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(
+      document.getElementById("search-box")
+    );
+
+    map.addListener("bounds_changed", () => {
+      searchBox.setBounds(map.getBounds());
+    });
+
+    const markers = []; // To store the markers
+
+    searchBox.addListener("places_changed", () => {
+      const places = searchBox.getPlaces();
+
+      if (places.length === 0) {
+        return;
+      }
+
+      // Clear existing markers
+      markers.forEach((marker) => marker.setMap(null));
+      markers.length = 0;
+
+      // For each place, add a marker
+      places.forEach((place) => {
+        if (!place.geometry) {
+          console.error("Returned place contains no geometry");
+          return;
+        }
+
+        const marker = new window.google.maps.Marker({
+          map,
+          title: place.name,
+          position: place.geometry.location,
+        });
+
+        markers.push(marker);
+
+        // Add a click event listener to the marker
+        marker.addListener("click", () => {
+          setSelectedPlace(place); // Store the selected place
+        });
+      });
+
+      // Adjust map bounds to fit markers
+      const bounds = new window.google.maps.LatLngBounds();
+      markers.forEach((marker) => bounds.extend(marker.getPosition()));
+      map.fitBounds(bounds);
+    });
+
+    const autocompleteInput = document.getElementById("autocomplete-input");
+
+    const autocomplete = new window.google.maps.places.Autocomplete(
+      autocompleteInput
+    );
+
+    autocomplete.addListener("place_changed", () => {
+      const selectedPlace = autocomplete.getPlace();
+      if (selectedPlace.geometry) {
+        map.setCenter(selectedPlace.geometry.location);
+        map.setZoom(15);
+      }
     });
   };
 
   return (
-  <div>
-    
-  <div id="map" style={{ width: "100%", height: "565px" }}>
-   
-  </div>;
-  </div>
-)}
+    <div>
+      <div
+        id="search-box"
+        style={{
+          position: "absolute",
+          top: "10px",
+          left: "10px",
+          zIndex: "1",
+        
+        }}
+      >
+        <input
+          id="autocomplete-input"
+          type="text"
+          value={autocompleteValue}
+          onChange={(e) => setAutocompleteValue(e.target.value)}
+          className="input"
+          placeholder="Search for places"
+        />
+        <div className="autocomplete-suggestions">
+          {autocompleteSuggestions.map((suggestion) => (
+            <div
+              key={suggestion.place_id}
+              className="suggestion"
+              onClick={() => {
+                setAutocompleteValue(suggestion.description);
+                setAutocompleteSuggestions([]);
+              }}
+            >
+              {suggestion.description}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div id="map" style={{ width: "100%", height: "565px" }}></div>
+      {selectedPlace && (
+        <div
+          style={{
+            position: "absolute",
+            top: "50px",
+            right: "10px",
+            zIndex: "1",
+            
+          }}
+        >
+          <button
+            onClick={() => {
+              // Implement your "Add to List" logic here
+              console.log("Add to List:", selectedPlace);
+            }}
+          >
+            Add
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default Home;
-
-
-
-
 
