@@ -121,6 +121,7 @@ exports.getCoordinates = onRequest((req, res) => {
   cors(req, res, async () => {
     //const city = req.body.city
   const {city} = req.body
+  //console.log(city);
     const response = {
       msg: "Succes retrieve coordinates",
       data: {},

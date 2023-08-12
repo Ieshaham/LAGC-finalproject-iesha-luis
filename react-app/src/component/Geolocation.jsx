@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ExploreDetail from "./Exploredetail";
-//import 'bootstrap/dist/css/bootstrap.css';
-//import * as ReactDOM from 'react-dom';
+import { useNavigate } from "react-router-dom";
 import { useParams, Link } from "react-router-dom";
 
 export default function CityToLatLngConverter() {
@@ -22,6 +20,7 @@ export default function CityToLatLngConverter() {
   };
 
   const getLatLng = async () => {
+    console.log("The city is:", city);
     const res = await fetch(`${backendHostUrl}/getCoordinates`, {
       method: "POST",
       headers: {
@@ -30,6 +29,8 @@ export default function CityToLatLngConverter() {
       body: JSON.stringify({ city }),
     });
 
+    //console.log("The Latitud is:" ,latitude);
+    //console.log("The longitude is:" ,longitude);
     const data = await res.json();
     console.log("The CityData is:", data);
     console.log(data.city);
@@ -48,12 +49,6 @@ export default function CityToLatLngConverter() {
     setPlacesData(placesData.data.results);
 
     console.log("The placesData is:", placesData);
-
-    //setName(placesData.data.results[].name);
-    /*setLatitude(placesData.data.results[1].geometry.location.lat);
-    setLongitude(placesData.data.results[1].geometry.location.lng);*/
-    /*console.log({id});
-console.log({name});*/
   };
 
   function parseUrl(url) {
@@ -65,17 +60,32 @@ console.log({name});*/
     return url;
     return <img src={url} />;
   }
-
+  let navigate = useNavigate();
+  const goBack = () => {
+    let path = `/explore`;
+    navigate(path);
+  };
   return (
-    <div className="form-group">
-      <div>
+    <div className="form-group2">
+      <div className="pagecontent">
+      <div name="header">
+        <h1>Search by City</h1>
+        <p>
+          Here you could search by and specific City. Please introduce the city
+          you are going to visit or want to search about.
+        </p>
+      </div>
+      <div className="search">
         <input
           type="text"
           placeholder="Enter city name"
           value={city}
           onChange={handleCityChange}
         />
-        <button onClick={getLatLng}>Get Latitude and Longitude</button>
+
+        <button className="btn btn-success" onClick={getLatLng}>
+          Search Places
+        </button>
         {latitude && longitude && (
           <div>
             Latitude: {latitude}
@@ -84,56 +94,65 @@ console.log({name});*/
           </div>
         )}
       </div>
-
       <div>
-        <h3>Places</h3>
-        <p>The places you could visit are:</p>
+        <button className="btn btn-primary" onClick={goBack}>
+          &larr;Go back
+        </button>
       </div>
-      <div></div>
-      <div className="results">
-        <div>
-          <table className="table">
-            <tr className="title">
-              <td>Place & Ranking</td>
-              <td>Address</td>
+
+
+      <div className="placestable">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Place</th>
+              <th>Type of Place</th>
+              <th>Rating</th>
+              <th>Details</th>
+              <th>More info</th>
             </tr>
-          </table>
-          {placesData.map((item) => (
-            <table className="table" key={item.place_id}>
-              <tr>
+          </thead>
+          <tbody>
+            {placesData.map((item) => (
+              <tr key={item.place_id}>
                 <td>
-                  <div
+                  {/*<div
                     dangerouslySetInnerHTML={{
                       __html: item.photos[0].html_attributions[0],
                     }}
-                  ></div>
+                  ></div>*/}
+                  <div>{item.name}</div>
+                  </td>
+                  <td>
                   <div>
                     <img src={item.icon} width="20px" height="20px"></img>
-                    {item.name}
                   </div>
+                  </td>
+                  <td>
                   <div>Rating: {item.rating}</div>
                 </td>
                 <td>
                   <div>{item.vicinity}</div>
                 </td>
                 <td>
-                  {/*<Link to={`/ExploreDetail?place_id=${place_id}`}>*/}
-                  <Link to={`/ExploreDetail?lat=${item.geometry.location.lat}&lng=${item.geometry.location.lng}`}>
-                    <button
-                      type="button"
-                      className="btn"
-                      data-bs-toggle="button"
+                  <button
+                    type="button"
+                    className="btn btn-secondary "
+                    data-bs-toggle="button"
+                  >
+                    <Link className="gobutton"
+                      to={`/ExploreDetail?lat=${item.geometry.location.lat}&lng=${item.geometry.location.lng}`}
                     >
-                      More Info
-                    </button>
-                  </Link>
+                    Go &rarr;
+                    </Link>
+                  </button>
                 </td>
               </tr>
-            </table>
-          ))}
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
-    /*{item.photos[0]}              */
+    </div>
   );
 }
