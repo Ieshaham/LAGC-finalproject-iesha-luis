@@ -148,3 +148,36 @@ exports.getCoordinates = onRequest((req, res) => {
     res.status(response.status).send(response);
   });
 });
+
+exports.getPlaceDetail = onRequest((req, res) => {
+  cors(req, res, async () => {
+    //const city = req.body.city
+  const {place_id} = req.body
+  console.log("This is the variable get from exploredetail",place_id);
+    const response = {
+      msg: "Succes retrieve place detail",
+      data: {},
+      status: 200,
+    };
+    if (!city){
+      response.msg= "Place was not pass"
+      response.status= 500
+    }
+    if(response.status===200){
+      try {
+        
+        const apiKey = `${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`;
+        //const data2= await axios.get(`https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJJV0KY4G22YgR4nLcqfiVgv0&key=AIzaSyBkZdDeKGgnKXzAu-RWrDGQAQBG-x3D334`);
+        const data2= await axios.get(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&key=${apiKey}`);
+        console.log(data2);
+        response.data = data.data2;
+      } catch (error) {
+        
+        response.status = 500;
+        response.msg = error.message;
+      }
+    }
+
+    res.status(response.status).send(response);
+  });
+});

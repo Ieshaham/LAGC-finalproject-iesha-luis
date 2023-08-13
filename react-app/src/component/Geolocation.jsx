@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function CityToLatLngConverter() {
   const [city, setCity] = useState("");
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
   const [placesData, setPlacesData] = useState([]);
-  const [ids, setId] = useState("");
-  const [name, setName] = useState("");
-  const names = {};
-
+ 
   const backendHostUrl = `${process.env.REACT_APP_FIREBASE_FUNCTIONS_HOST}/geeks-firebase-72e6d/us-central1`;
 
-  const itemsPerPage = 10; //Itemps per page on pagination
+ // const itemsPerPage = 10; //Itemps per page on pagination
   //Handeling pagination code
   const handleCityChange = (event) => {
     setCity(event.target.value);
@@ -28,7 +23,6 @@ export default function CityToLatLngConverter() {
       },
       body: JSON.stringify({ city }),
     });
-
     //console.log("The Latitud is:" ,latitude);
     //console.log("The longitude is:" ,longitude);
     const data = await res.json();
@@ -51,6 +45,7 @@ export default function CityToLatLngConverter() {
     console.log("The placesData is:", placesData);
   };
 
+  
   function parseUrl(url) {
     // const parsedUrl =
     console.log("In the parse<Url function");
@@ -60,6 +55,7 @@ export default function CityToLatLngConverter() {
     return url;
     return <img src={url} />;
   }
+  
   let navigate = useNavigate();
   const goBack = () => {
     let path = `/explore`;
@@ -86,14 +82,7 @@ export default function CityToLatLngConverter() {
         <button className="btn btn-success" onClick={getLatLng}>
           Search Places
         </button>
-        {latitude && longitude && (
-          <div>
-            Latitude: {latitude}
-            <br />
-            Longitude: {longitude}
-          </div>
-        )}
-      </div>
+       </div>
       <div>
         <button className="btn btn-primary" onClick={goBack}>
           &larr;Go back
@@ -141,7 +130,7 @@ export default function CityToLatLngConverter() {
                     data-bs-toggle="button"
                   >
                     <Link className="gobutton"
-                      to={`/ExploreDetail?lat=${item.geometry.location.lat}&lng=${item.geometry.location.lng}`}
+                      to={`/ExploreDetail?place_id=${item.place_id}`}
                     >
                     Go &rarr;
                     </Link>
