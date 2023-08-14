@@ -13,7 +13,10 @@ import NavBar from "./component/NavBar";
 
 import ExploreDetail from "./component/Exploredetail"
 import CityToLatLngConverter from './component/Geolocation';
-import Map from './component/Map';
+
+import Map from "./component/Map";
+
+
 
 
 export default function App() {
@@ -25,13 +28,15 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Landingpage />}></Route>
         <Route path="/explore" element={<Explore />}></Route>
-        {/*<Route path="/signing" element={<sig />}></Route>*/}
-        <Route path="/signup" element={<SignUP />}></Route>
+         <Route path="/signing" element={<SignInG />}></Route>
+        <Route path="/signup" element={<SignUP />}></Route> 
         <Route path="/geolocation" element={<CityToLatLngConverter />}></Route>
         <Route path="/exploredetail" element={<ExploreDetail />}></Route>
         <Route path="/map" element={<Map />}></Route>
-        <Route path="list" element={<List/>}></Route>
-        {/*<Route path="googlesignin" element={<GoogleSignIn/>}></Route>*/}
+        <Route path="/list" element={<List/>}></Route>
+
+        <Route path="googlesignin" element={<GoogleSignIn/>}></Route>
+
         
       </Routes>
       </ContextProvider>

@@ -8,6 +8,7 @@ import { initializeApp } from "firebase/app";
 import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
 import { getAuth, connectAuthEmulator } from "firebase/auth";
 import { connectFirestoreEmulator, getFirestore } from "firebase/firestore";
+// import Footer from "./component/Footer";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBkZdDeKGgnKXzAu-RWrDGQAQBG-x3D334",
@@ -34,6 +35,8 @@ connectFirestoreEmulator(
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <App />
+  {/* <Footer /> */}
+  
 );
 
 // If you want to start measuring performance in your app, pass a function

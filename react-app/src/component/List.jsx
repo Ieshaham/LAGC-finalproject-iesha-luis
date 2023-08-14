@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from "react";
 
 function Explore() {
@@ -12,7 +10,7 @@ function Explore() {
   }, []);
 
   const loadAutocomplete = () => {
-    const googleMapsApiKey = process.env.REACT_APP_GOOGLE_PLACES_API_KEY;
+    const googleMapsApiKey = `${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`;
     const script = document.createElement("script");
     script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&libraries=places`;
     script.async = true;

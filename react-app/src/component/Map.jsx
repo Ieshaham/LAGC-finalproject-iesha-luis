@@ -1,8 +1,4 @@
-
-
 import React, { useEffect, useState } from "react";
-
-
 
 function Home() {
   const [selectedPlace, setSelectedPlace] = useState(null);
@@ -14,7 +10,7 @@ function Home() {
   }, []);
 
   const loadMap = () => {
-    const googleMapsApiKey = process.env.REACT_APP_GOOGLE_PLACES_API_KEY;
+    const googleMapsApiKey = `${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`;
     const script = document.createElement("script");
     script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&libraries=places`;
     script.async = true;
@@ -161,4 +157,3 @@ function Home() {
 }
 
 export default Home;
-
