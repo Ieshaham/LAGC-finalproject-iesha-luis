@@ -10,6 +10,7 @@ import { getAuth, connectAuthEmulator } from "firebase/auth";
 import { connectFirestoreEmulator, getFirestore } from "firebase/firestore";
 import ContextProvider from "./Context";
 import NavBar from "./component/NavBar";
+// import Footer from "./component/Footer";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBkZdDeKGgnKXzAu-RWrDGQAQBG-x3D334",
@@ -38,6 +39,7 @@ root.render(
   <ContextProvider>
     <NavBar />
     <App />
+    {/* <Footer /> */}
   </ContextProvider>
 );
 

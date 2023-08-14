@@ -108,6 +108,14 @@ code {
   height:fit-content;
 }
 
+/* .footer {
+  background-color: rgba(235, 232, 232, 0.295);
+  display: flex;
+  justify-content: space-between;
+  border:solid 1px  lightgray;
+  border-top: 0;
+  height:fit-content;
+} */
 
 .login-button {
   background-color: orange;
@@ -226,4 +234,15 @@ code {
   align-items: center;
   height: 100vh;
 }
+#autocomplete-input{
+  height:40px;
+  width:480px;
+  margin-top:20px;
+  margin-left:30%;
+  border-color:orange;
+  border-radius:5px;
+}
 
+.list{
+  margin-left:50px;
+}
