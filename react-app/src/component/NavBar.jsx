@@ -1,13 +1,17 @@
-        
-        function NavBar(){
-            return (<nav className='nav'>
+import { Link } from "react-router-dom";
 
-      
-            <div className='title'>Voyage<span className='hawk'>Hawk</span>
-            </div>
-          
-           <button className='login-button'> <a href="/">Home</a></button>
-            </nav>)
-        }
+function NavBar() {
+  return (
+    <nav className="nav">
+      <div className="title">
+        Voyage<span className="hawk">Hawk</span>
+      </div>
 
-       export default NavBar
+      <Link to="/">
+        <button className="login-button">Home</button>
+      </Link>
+    </nav>
+  );
+}
+
+export default NavBar;

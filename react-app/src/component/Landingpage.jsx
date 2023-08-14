@@ -4,7 +4,6 @@ import { auth } from '../index';
 import { Context } from '../Context';
 
 
-
 const provider = new GoogleAuthProvider();
 
 // provider.setCustomParameters({
@@ -78,7 +77,7 @@ function Landingpage() {
           //   .catch((err) => console.error(err))
         }}>Sign In</button>
 
-      {/* <button className='signout' onClick={() => auth.signOut()}>Sign out</button> */}
+       <button className='signout' onClick={() => auth.signOut()}>Sign out</button> 
 
         </div>
  

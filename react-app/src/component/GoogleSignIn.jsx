@@ -1,6 +1,6 @@
 import React from 'react';
 import { GoogleLogin } from 'react-google-login';
-//import { GoogleLogin } from "@react-oauth/google";
+//import { GoogleOAuthProvider  } from "@react-oauth/google";
 
 const GoogleSignIn = ({ onLoginSuccess, onLoginFailure }) => {
   //const clientId = 'YOUR_GOOGLE_CLIENT_ID';

@@ -16,28 +16,28 @@ const ExploreDetail = () => {
     navigate(path);
   };
 
+  console.log("Entering call funtion getplacedetail");
+
+  const getPlaceDetail = async () => {
+    const res2 = await fetch(`${backendHostUrl}/getPlaceDetail`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ place_id }),
+    });
+  
+    const data2 = await res2.json();
+    console.log("This is the response:", data2);
+  
+  
+  console.log("Out from call function getPlaceDetail");
+  
+  };
+  
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const apiKey = `${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`;
-        const response = await axios.get(
-          `https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&key=${apiKey}`
-        );
-
-        if (response.status === 200) {
-          const data2 = response.data; 
-          console.log(data2);
-          
-        } else {
-          console.error("Error fetching place detail:", response.status, response.statusText);
-        }
-      } catch (error) {
-        console.error("Error fetching place detail:", error);
-      }
-    };
-
-    fetchData();
-  }, [place_id]);
+    getPlaceDetail();
+  }, [])
 
   return (
     <div className="form-group">

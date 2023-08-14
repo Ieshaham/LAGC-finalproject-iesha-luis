@@ -1,10 +1,16 @@
 import React, { createContext, useState, useEffect } from 'react';
 
 import { auth } from './index'
+import { useNavigate } from 'react-router-dom';
 
 export const Context = createContext();
 
 export default function ContextProvider(props) {
+    let navigate = useNavigate();
+    const goExplore = () => {
+      let path = `/explore`;
+      navigate(path);
+    };
 
     const [user, setUser] = useState({});
 
@@ -30,6 +36,9 @@ export default function ContextProvider(props) {
                 console.log('data', data);
 
                 setUser(data.data);
+
+                //Calling new page after 
+                goExplore();
             }
             else {
 
