@@ -78,15 +78,15 @@ function Explore() {
         </div>
       </div>
       <div className="selected-places-list">
-        <h2>Selected Places:</h2>
-        <ul>
+        <h2 className="list">Itinerary List:</h2>
+        <ol>
           {selectedPlaces.map((place, index) => (
             <li key={index}>
               {place.name}{" "}
               <button onClick={() => handleDeletePlace(index)}>Delete</button>
             </li>
           ))}
-        </ul>
+        </ol>
       </div>
     </div>
   );
