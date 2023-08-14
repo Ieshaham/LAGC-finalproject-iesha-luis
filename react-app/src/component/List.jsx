@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from "react";
 
 function Explore() {
@@ -12,7 +10,7 @@ function Explore() {
   }, []);
 
   const loadAutocomplete = () => {
-    const googleMapsApiKey = process.env.REACT_APP_GOOGLE_PLACES_API_KEY;
+    const googleMapsApiKey = `${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`;
     const script = document.createElement("script");
     script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&libraries=places`;
     script.async = true;
@@ -78,15 +76,15 @@ function Explore() {
         </div>
       </div>
       <div className="selected-places-list">
-        <h2 className="list">Itinerary List:</h2>
-        <ol>
+        <h2>Selected Places:</h2>
+        <ul>
           {selectedPlaces.map((place, index) => (
             <li key={index}>
               {place.name}{" "}
               <button onClick={() => handleDeletePlace(index)}>Delete</button>
             </li>
           ))}
-        </ol>
+        </ul>
       </div>
     </div>
   );
