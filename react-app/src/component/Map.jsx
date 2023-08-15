@@ -198,60 +198,60 @@ function Explore() {
           selectedPlace,
         ]);
 
-           // Clear the autocomplete input
-           setAutocompleteValue("");
-           autocompleteInput.value = "";
-         }
-       });
-     };
-   
-     const handleDeletePlace = (index) => {
-       setSelectedPlaces((prevSelectedPlaces) => {
-         const updatedSelectedPlaces = [...prevSelectedPlaces];
-         updatedSelectedPlaces.splice(index, 1);
-         return updatedSelectedPlaces;
-       });
-     };
-   
-     return (
-       <div>
-         <div className="search-box">
-           <input
-             id="autocomplete-input"
-             type="text"
-             value={autocompleteValue}
-             onChange={(e) => setAutocompleteValue(e.target.value)}
-             className="input"
-             placeholder="Search for places"
-           />
-           <div className="autocomplete-suggestions">
-             {autocompleteSuggestions.map((suggestion) => (
-               <div
-                 key={suggestion.place_id}
-                 className="suggestion"
-                 onClick={() => {
-                   setAutocompleteValue(suggestion.description);
-                   setAutocompleteSuggestions([]);
-                 }}
-               >
-                 {suggestion.description}
-               </div>
-             ))}
-           </div>
-         </div>
-         <div className="selected-places-list">
-           <h2>Selected Places:</h2>
-           <ul>
-             {selectedPlaces.map((place, index) => (
-               <li key={index}>
-                 {place.name}{" "}
-                 <button onClick={() => handleDeletePlace(index)}>Delete</button>
-               </li>
-             ))}
-           </ul>
-         </div>
-       </div>
-     );
-   }
-   
-   export default Explore;
+        // Clear the autocomplete input
+        setAutocompleteValue("");
+        autocompleteInput.value = "";
+      }
+    });
+  };
+
+  const handleDeletePlace = (index) => {
+    setSelectedPlaces((prevSelectedPlaces) => {
+      const updatedSelectedPlaces = [...prevSelectedPlaces];
+      updatedSelectedPlaces.splice(index, 1);
+      return updatedSelectedPlaces;
+    });
+  };
+
+  return (
+    <div>
+      <div className="search-box">
+        <input
+          id="autocomplete-input"
+          type="text"
+          value={autocompleteValue}
+          onChange={(e) => setAutocompleteValue(e.target.value)}
+          className="input"
+          placeholder="Search for places"
+        />
+        <div className="autocomplete-suggestions">
+          {autocompleteSuggestions.map((suggestion) => (
+            <div
+              key={suggestion.place_id}
+              className="suggestion"
+              onClick={() => {
+                setAutocompleteValue(suggestion.description);
+                setAutocompleteSuggestions([]);
+              }}
+            >
+              {suggestion.description}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="selected-places-list">
+        <h2>Selected Places:</h2>
+        <ul>
+          {selectedPlaces.map((place, index) => (
+            <li key={index}>
+              {place.name}{" "}
+              <button onClick={() => handleDeletePlace(index)}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+export default Explore;
