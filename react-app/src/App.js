@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landingpage from "./component/Landingpage"
 import Explore from "./component/Explore"
-import SignInG from "./component/Signing"
+// import SignInG from "./component/Signing"
 import SignUP from "./component/Signup"
 import List from "./component/List"
 import GoogleSignIn from "./component/GoogleSignIn";
@@ -22,8 +22,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Landingpage />}></Route>
         <Route path="/explore" element={<Explore />}></Route>
-
-         <Route path="/signing" element={<SignInG />}></Route>
+{/* 
+         <Route path="/signing" element={<SignInG />}></Route> */}
         <Route path="/signup" element={<SignUP />}></Route> 
         <Route path="/geolocation" element={<CityToLatLngConverter />}></Route>
         <Route path="/exploredetail" element={<ExploreDetail />}></Route>
