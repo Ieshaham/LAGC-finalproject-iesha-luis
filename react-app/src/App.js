@@ -5,6 +5,7 @@ import Explore from "./component/Explore";
 import List from "./component/List";
 import ContextProvider from "./Context";
 import NavBar from "./component/NavBar";
+import ScrollToTop from './component/ScrollToTop';
 
 
 
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/exploredetail" element={<ExploreDetail />}></Route>
         <Route path="/map" element={<Map />}></Route>
         <Route path="/list" element={<List/>}></Route>
+        <ScrollToTop/>
       </Routes>
       </ContextProvider>
 

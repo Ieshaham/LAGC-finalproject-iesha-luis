@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import  ScrollToTop from './component/ScrollToTop.jsx';
+
 import "../App.css";
 
 export default function CityToLatLngConverter() {
@@ -8,7 +10,7 @@ export default function CityToLatLngConverter() {
   const [placesData, setPlacesData] = useState([]);
  
   const backendHostUrl = `${process.env.REACT_APP_FIREBASE_FUNCTIONS_HOST}/geeks-firebase-72e6d/us-central1`;
-
+  
  // const itemsPerPage = 10; //Itemps per page on pagination
   //Handeling pagination code
   const handleCityChange = (event) => {
@@ -62,6 +64,8 @@ export default function CityToLatLngConverter() {
     let path = `/explore`;
     navigate(path);
   };
+
+
   return (
     <div className="form-group2">
       <div className="pagecontent">
@@ -136,6 +140,7 @@ export default function CityToLatLngConverter() {
                     Go &rarr;
                     </Link>
                   </button>
+                  <ScrollToTop/>   
                 </td>
               </tr>
             ))}
