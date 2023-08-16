@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import  ScrollToTop from './component/ScrollToTop.jsx';
+// import  {ScrollToTop} from './component/ScrollToTop';
 
 import "../App.css";
 
@@ -49,15 +49,14 @@ export default function CityToLatLngConverter() {
   };
 
   
-  function parseUrl(url) {
-    // const parsedUrl =
-    console.log("In the parse<Url function");
-    console.log(url.split("\\"));
-    console.log("\\");
-
-    return url;
-    return <img src={url} />;
-  }
+  // function parseUrl(url) {
+  //   // const parsedUrl =
+  //   console.log("In the parseUrl function");
+  //   console.log(url.split("\\"));
+  //   console.log("\\");
+  //   return url;
+  //   return <img src={url} />;
+  // }
   
   let navigate = useNavigate();
   const goBack = () => {
@@ -118,11 +117,6 @@ export default function CityToLatLngConverter() {
                   <div>{item.name}</div>
                   </td>
                   <td>
-                  <div>
-                    <img src={item.icon} width="20px" height="20px"></img>
-                  </div>
-                  </td>
-                  <td>
                   <div>Rating: {item.rating}</div>
                 </td>
                 <td>
@@ -140,7 +134,7 @@ export default function CityToLatLngConverter() {
                     Go &rarr;
                     </Link>
                   </button>
-                  <ScrollToTop/>   
+                  {/* <ScrollToTop/>    */}
                 </td>
               </tr>
             ))}

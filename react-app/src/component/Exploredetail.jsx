@@ -45,6 +45,17 @@ const ExploreDetail = () => {
     //console.log(Phone);
 
     console.log("Out from call function getPlaceDetail");
+    console.log("The photo_reference is", Photo)
+
+    
+    // const photoRes = await fetch(`${backendHostUrl}/getActivities`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ Photo}),
+    // });
+
   };
 
   useEffect(() => {
@@ -71,6 +82,7 @@ const ExploreDetail = () => {
             {Name}
             The photo reference:
             {Photo}
+            <img className="col-3 img-fluid img-thumbnail" src="https://maps.googleapis.com/maps/api/place/{Photo}" alt=""></img>
             {place_id}
           </td>
           <td>{Phone}</td>
@@ -79,7 +91,7 @@ const ExploreDetail = () => {
           </td>
           <td>
           <Link to={`${Website}`}>Website</Link>
-          </td>changes
+          </td>
           <td>
             <Link to={`${Url}`}>Google Maps Location</Link>
           </td>
