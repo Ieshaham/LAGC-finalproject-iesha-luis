@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+// import  {ScrollToTop} from './component/ScrollToTop';
+
 import "../App.css";
 
 export default function CityToLatLngConverter() {
@@ -8,7 +10,7 @@ export default function CityToLatLngConverter() {
   const [placesData, setPlacesData] = useState([]);
  
   const backendHostUrl = `${process.env.REACT_APP_FIREBASE_FUNCTIONS_HOST}/geeks-firebase-72e6d/us-central1`;
-
+  
  // const itemsPerPage = 10; //Itemps per page on pagination
   //Handeling pagination code
   const handleCityChange = (event) => {
@@ -47,21 +49,22 @@ export default function CityToLatLngConverter() {
   };
 
   
-  function parseUrl(url) {
-    // const parsedUrl =
-    console.log("In the parse<Url function");
-    console.log(url.split("\\"));
-    console.log("\\");
-
-    return url;
-    return <img src={url} />;
-  }
+  // function parseUrl(url) {
+  //   // const parsedUrl =
+  //   console.log("In the parseUrl function");
+  //   console.log(url.split("\\"));
+  //   console.log("\\");
+  //   return url;
+  //   return <img src={url} />;
+  // }
   
   let navigate = useNavigate();
   const goBack = () => {
     let path = `/explore`;
     navigate(path);
   };
+
+
   return (
     <div className="form-group2">
       <div className="pagecontent">
@@ -114,11 +117,6 @@ export default function CityToLatLngConverter() {
                   <div>{item.name}</div>
                   </td>
                   <td>
-                  <div>
-                    <img src={item.icon} width="20px" height="20px"></img>
-                  </div>
-                  </td>
-                  <td>
                   <div>Rating: {item.rating}</div>
                 </td>
                 <td>
@@ -136,6 +134,7 @@ export default function CityToLatLngConverter() {
                     Go &rarr;
                     </Link>
                   </button>
+                  {/* <ScrollToTop/>    */}
                 </td>
               </tr>
             ))}

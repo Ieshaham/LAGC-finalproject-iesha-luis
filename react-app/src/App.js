@@ -8,6 +8,7 @@ import NavBar from "./component/NavBar";
 
 
 
+
 import ExploreDetail from "./component/Exploredetail"
 import CityToLatLngConverter from './component/Geolocation';
 
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/exploredetail" element={<ExploreDetail />}></Route>
         <Route path="/map" element={<Map />}></Route>
         <Route path="/list" element={<List/>}></Route>
+        
       </Routes>
       </ContextProvider>
 
