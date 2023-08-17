@@ -30,7 +30,7 @@ export default function Explore() {
           option for your search.
         </p>
       </div>
-      <div className="row">
+      <div className="explorebuttons">
         <div>
           <button className="btn  btn-success" width="120px" onClick={routeChangetoGeolocation}>
             Search by City

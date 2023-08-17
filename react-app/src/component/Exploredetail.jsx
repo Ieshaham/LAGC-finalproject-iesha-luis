@@ -45,9 +45,8 @@ const ExploreDetail = () => {
     //console.log(Phone);
 
     console.log("Out from call function getPlaceDetail");
-    console.log("The photo_reference is", Photo)
+    console.log("The photo_reference is", Photo);
 
-    
     // const photoRes = await fetch(`${backendHostUrl}/getActivities`, {
     //   method: "POST",
     //   headers: {
@@ -55,7 +54,6 @@ const ExploreDetail = () => {
     //   },
     //   body: JSON.stringify({ Photo}),
     // });
-
   };
 
   useEffect(() => {
@@ -63,48 +61,54 @@ const ExploreDetail = () => {
   }, []);
 
   return (
-    <table className="table">
-      <thead>
-        <tr>
-          <h1>The place information</h1>
-        </tr>
-        <tr>
-          <th>Name</th>
-          <th>Phone</th>
-          <th>Address</th>
-          <th>Website</th>
-          <th>Google Maps Location</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            {Name}
-            The photo reference:
-            {Photo}
-            <img className="col-3 img-fluid img-thumbnail" src={`https://maps.googleapis.com/maps/api/place/${Photo}`} alt=""></img>
-            {place_id}
-          </td>
-          <td>{Phone}</td>
-          <td>
-            {Address}
-          </td>
-          <td>
-          <Link to={`${Website}`}>Website</Link>
-          </td>
-          <td>
-            <Link to={`${Url}`}>Google Maps Location</Link>
-          </td>
-        </tr>
-        <tr>
-          <div>
-            <button className="btn btn-primary" onClick={goBack}>
-              &larr;Go back
-            </button>
-          </div>
-        </tr>
-      </tbody>
-    </table>
+    <div className="form-group2">
+      <div className="pagecontent">
+        <table className="table">
+          <thead>
+            <tr>
+              <h1>The place information</h1>
+            </tr>
+            <tr>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Address</th>
+              <th>Website</th>
+              <th>Google Maps Location</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                {Name}
+                {/* The photo reference:
+              {Photo} */}
+                <img
+                  className="col-3 img-fluid img-thumbnail"
+                  src={`https://maps.googleapis.com/maps/api/place/${Photo}`}
+                  alt=""
+                ></img>
+                {/* {place_id} */}
+              </td>
+              <td>{Phone}</td>
+              <td>{Address}</td>
+              <td>
+                <Link to={`${Website}`}>Website</Link>
+              </td>
+              <td>
+                <Link to={`${Url}`}>Google Maps Location</Link>
+              </td>
+            </tr>
+            <tr>
+              <div>
+                <button className="btn btn-primary" onClick={goBack}>
+                  &larr;Go back
+                </button>
+              </div>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 };
 
