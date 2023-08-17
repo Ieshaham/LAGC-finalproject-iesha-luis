@@ -5,7 +5,7 @@ import Explore from "./component/Explore"
 // import SignInG from "./component/Signing"
 import SignUP from "./component/Signup"
 import List from "./component/List"
-import GoogleSignIn from "./component/GoogleSignIn";
+
 
 
 import ExploreDetail from "./component/Exploredetail"
@@ -29,8 +29,6 @@ export default function App() {
         <Route path="/exploredetail" element={<ExploreDetail />}></Route>
         <Route path="/map" element={<Map />}></Route>
         <Route path="/list" element={<List/>}></Route>
-
-        <Route path="googlesignin" element={<GoogleSignIn/>}></Route>
         
       </Routes>
 

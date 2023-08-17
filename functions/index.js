@@ -181,3 +181,41 @@ exports.getPlaceDetail = onRequest((req, res) => {
     res.status(response.status).send(response);
   });
 });
+
+//iesha
+
+// const express = require('express');
+// const cors = require('cors');
+// const axios = require('axios');
+
+// const app = express();
+// const PORT = process.env.PORT || 3000;
+
+// app.use(cors()); 
+
+// // Define a route to fetch autocomplete suggestions
+// app.get('/getAutocompletePlaces', async (req, res) => {
+//   const query = req.query.query;
+//   const googleMapsApiKey = process.env.REACT_APP_GOOGLE_PLACES_API_KEY; 
+//   const apiUrl = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&libraries=places`;
+
+//   try {
+//     const response = await axios.get(apiUrl);
+//     const suggestions = response.data.predictions.map(prediction => ({
+//       place_id: prediction.place_id,
+//       description: prediction.description,
+//     }));
+//     res.json(suggestions);
+//   } catch (error) {
+//     console.error("Error fetching autocomplete places:", error.message);
+//     res.status(500).json({ error: "Failed to fetch autocomplete places" });
+//   }
+// });
+
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });
+
+
+//map 
+
