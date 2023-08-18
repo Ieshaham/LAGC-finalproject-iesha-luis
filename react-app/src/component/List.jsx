@@ -49,8 +49,8 @@ function Explore() {
   };
 
   return (
-    <div className="list-page">
 
+    <div className="list-page">
       <h1 className="List-title">Customize your Voyage</h1>
       <div className="search-box">
         <input
