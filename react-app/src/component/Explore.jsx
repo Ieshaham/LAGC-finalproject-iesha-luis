@@ -3,36 +3,46 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
 
-
 const backendHostUrl = `${process.env.REACT_APP_FIREBASE_FUNCTIONS_HOST}/geeks-firebase-72e6d/us-central1`;
-//const backendHostUrl = `https://www.eventbriteapi.com/v3/users/me/?token=UZ2OAYX2ZOAUB7U34BTD`;
-// const backendHostUrl ="https://lugras-fluffy-space-computing-machine-vw5pw6v769qhw64g-3000.preview.app.github.dev";
 
 export default function Explore() {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    let path = `/`;
+    navigate(path);
+  };
+
   const routeChangetoList = () => {
     let path = `/list`;
     navigate(path);
-  }
+  };
+
   const routeChangetoGeolocation = () => {
     let path = `/geolocation`;
     navigate(path);
-  }
+  };
+
   return (
-    <div className="form-group-row">
+    <div className="form-group row">
+      <div>
+        <button className="Go-back-buttons-on-explore" onClick={goBack}>
+          &larr;Go back
+        </button>
+      </div>
       <div>
         <h1>Search your places</h1>
       </div>
       <div>
         <p>
-          Here you could choose search by an specific City name or you could personalize
-          a travel Itinerary. Please choose the best
+          Here you could choose search by a specific City Name or you could get
+          more information about a specific place. Please choose the best
           option for your search.
         </p>
       </div>
       <div className="row">
         <div>
-          <button className="seach-city" width="120px" onClick={routeChangetoGeolocation}>
+          <button className="search-city" width="120px" onClick={routeChangetoGeolocation}>
             Search by City
           </button>
         </div>

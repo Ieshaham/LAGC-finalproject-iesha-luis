@@ -14,6 +14,7 @@
   },
   "main": "index.js",
   "dependencies": {
+    "@googlemaps/google-maps-services-js": "^3.3.35",
     "@react-google-maps/api": "^2.19.2",
     "@react-oauth/google": "^0.11.1",
     "axios": "^1.4.0",

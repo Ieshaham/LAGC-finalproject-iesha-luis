@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 function Explore() {
   const [autocompleteValue, setAutocompleteValue] = useState("");
   const [autocompleteSuggestions, setAutocompleteSuggestions] = useState([]);
@@ -39,6 +39,11 @@ function Explore() {
       }
     });
   };
+  let navigate = useNavigate();
+  const goBack = () => {
+    let path = `/explore`;
+    navigate(path);
+  };
 
   const handleDeletePlace = (index) => {
     setSelectedPlaces((prevSelectedPlaces) => {
@@ -52,6 +57,11 @@ function Explore() {
 
     <div className="list-page">
       <h1 className="List-title">Customize your Voyage</h1>
+      <div>
+          <button className="Go-back-buttons" onClick={goBack}>
+            &larr;Go back
+          </button>
+        </div>
       <div className="search-box">
         <input
           id="autocomplete-input"

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import "../App.css";
 
 export default function CityToLatLngConverter() {
   const [city, setCity] = useState("");
@@ -8,8 +9,18 @@ export default function CityToLatLngConverter() {
 
   const backendHostUrl = `${process.env.REACT_APP_FIREBASE_FUNCTIONS_HOST}/geeks-firebase-72e6d/us-central1`;
 
-  // const itemsPerPage = 10; //Itemps per page on pagination
   //Handeling pagination code
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+  //determinando el size de la lista a hacer render en pagina
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = placesData.slice(indexOfFirstItem, indexOfLastItem);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   const handleCityChange = (event) => {
     setCity(event.target.value);
   };
@@ -23,12 +34,11 @@ export default function CityToLatLngConverter() {
       },
       body: JSON.stringify({ city }),
     });
-    //console.log("The Latitud is:" ,latitude);
-    //console.log("The longitude is:" ,longitude);
+
     const data = await res.json();
     console.log("The CityData is:", data);
     console.log(data.city);
-    //console.log(city);
+
     const { lat, lng } = data.data.results[0].geometry.location;
 
     const activityRes = await fetch(`${backendHostUrl}/getActivities`, {
@@ -45,30 +55,21 @@ export default function CityToLatLngConverter() {
     console.log("The placesData is:", placesData);
   };
 
-
-  function parseUrl(url) {
-    // const parsedUrl =
-    console.log("In the parse<Url function");
-    console.log(url.split("\\"));
-    console.log("\\");
-
-    return url;
-    return <img src={url} />;
-  }
-
   let navigate = useNavigate();
   const goBack = () => {
     let path = `/explore`;
     navigate(path);
   };
+
   return (
     <div className="form-group2">
       <div className="pagecontent">
+   
         <div name="header">
           <h1>Search by City</h1>
           <p>
-            Here you could search by and specific City. Please introduce the city
-            you are going to visit or want to search about.
+            Here you could search by and specific City. Please introduce the
+            city you are going to visit or want to search about.
           </p>
         </div>
         <div className="search">
@@ -89,7 +90,6 @@ export default function CityToLatLngConverter() {
           </button>
         </div>
 
-
         <div className="placestable">
           <table className="table">
             <thead>
@@ -97,14 +97,15 @@ export default function CityToLatLngConverter() {
                 <th>Place</th>
                 <th>Type of Place</th>
                 <th>Rating</th>
-                <th>Details</th>
+                {/* <th>Details</th> */}
                 <th>More info</th>
               </tr>
             </thead>
             <tbody>
-              {placesData.map((item) => (
+              {currentItems.map((item) => (
+                // {placesData.map((item) => (
                 <tr key={item.place_id}>
-                  <td>
+                  <td className="tablename">
                     {/*<div
                     dangerouslySetInnerHTML={{
                       __html: item.photos[0].html_attributions[0],
@@ -118,28 +119,44 @@ export default function CityToLatLngConverter() {
                     </div>
                   </td>
                   <td>
-                    <div>Rating: {item.rating}</div>
+                    <div>{item.rating}</div>
                   </td>
-                  <td>
-                    <div>{item.vicinity}</div>
-                  </td>
+                  {/* <td>
+                  <div>{item.vicinity}</div>
+                </td> */}
                   <td>
                     <button
                       type="button"
                       className="btn btn-secondary "
                       data-bs-toggle="button"
                     >
-                      <Link className="gobutton"
+                      <Link
+                        className="gobutton"
                         to={`/ExploreDetail?place_id=${item.place_id}`}
                       >
                         Go &rarr;
                       </Link>
                     </button>
+                    {/* <ScrollToTop/>    */}
                   </td>
                 </tr>
+                // ))}
               ))}
             </tbody>
           </table>
+        </div>
+        <div className="pagination">
+          {Array.from({
+            length: Math.ceil(placesData.length / itemsPerPage),
+          }).map((_, index) => (
+            <button
+              key={index}
+              className={index + 1 === currentPage ? "active btn btn-secondary" : " btn btn-secondary"}
+              onClick={() => handlePageChange(index + 1)}
+            >
+              {index + 1}
+            </button>
+          ))}
         </div>
       </div>
     </div>

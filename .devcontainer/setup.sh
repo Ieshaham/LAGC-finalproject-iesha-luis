@@ -31,5 +31,5 @@ echo "GET_USERS_ENDPOINT=\"https://$CODESPACE_NAME-5001.preview.app.github.dev/g
 echo "REACT_APP_FIREBASE_FUNCTIONS_HOST=\"https://$CODESPACE_NAME-5001.preview.app.github.dev\"" > ./react-app/.env;
 echo "REACT_APP_FIREBASE_FIRESTORE_HOST=\"https://$CODESPACE_NAME-5057.preview.app.github.dev\"" >> ./react-app/.env;
 echo "REACT_APP_FIREBASE_AUTH_HOST=\"https://$CODESPACE_NAME-9099.preview.app.github.dev\"" >> ./react-app/.env;
-echo "REACT_APP_GOOGLE_PLACES_API_KEY="AIzaSyBkZdDeKGgnKXzAu-RWrDGQAQBG-x3D334"" >> ./functions/.env;
-echo "GOOGLE_CLIENT_ID_="226920662966-m168pjv5pahbfu6a5333v66d6oerui2r.apps.googleusercontent.com"" >> ./functions/.env;
+echo "REACT_APP_GOOGLE_PLACES_API_KEY=\"AIzaSyBkZdDeKGgnKXzAu-RWrDGQAQBG-x3D334\"" >> ./functions/.env;
+echo "GOOGLE_CLIENT_ID_=\"226920662966-m168pjv5pahbfu6a5333v66d6oerui2r.apps.googleusercontent.com\"" >> ./functions/.env;

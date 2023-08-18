@@ -4,7 +4,6 @@ import { auth } from '../index';
 import { Context } from '../Context';
 
 
-
 const provider = new GoogleAuthProvider();
 
 // provider.setCustomParameters({
@@ -33,6 +32,15 @@ function Landingpage() {
   return (
     <div className="landingpage">
     <div className="App">
+    <nav className='nav'>
+
+<div className='title'>Voyage<span className='hawk'>Hawk</span></div>
+<div className="nav-tabs">
+<button className='explore-nav'> <a href="/Explore">Explore</a></button>
+<button className='login-button'> <a href="/">Login</a></button>
+  <button className='signout' onClick={() => auth.signOut()}>Sign out</button> 
+  </div>
+</nav>
       <div className="slogans">
       <p className='slogan'>Where your travel dreams take flight!</p>
       <p className='bottom-slogan'>Your ultimate travel itinerary navigator</p>
@@ -78,7 +86,7 @@ function Landingpage() {
           //   .catch((err) => console.error(err))
         }}>Sign In</button>
 
-      {/* <button className='signout' onClick={() => auth.signOut()}>Sign out</button> */}
+     
 
         </div>
  
