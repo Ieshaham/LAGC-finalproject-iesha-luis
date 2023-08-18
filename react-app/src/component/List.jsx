@@ -1,11 +1,9 @@
-
 import React, { useState, useEffect } from "react";
 
 function Explore() {
   const [autocompleteValue, setAutocompleteValue] = useState("");
   const [autocompleteSuggestions, setAutocompleteSuggestions] = useState([]);
   const [selectedPlaces, setSelectedPlaces] = useState([]);
-
   useEffect(() => {
     loadAutocomplete();
   }, []);
@@ -51,7 +49,9 @@ function Explore() {
   };
 
   return (
-    <div>
+    <div className="list-page">
+
+      <h1 className="List-title">Customize your Voyage</h1>
       <div className="search-box">
         <input
           id="autocomplete-input"
@@ -77,18 +77,34 @@ function Explore() {
         </div>
       </div>
       <div className="selected-places-list">
-        <h2>Selected Places:</h2>
-        <ul>
-          {selectedPlaces.map((place, index) => (
-            <li key={index}>
-              {place.name}{" "}
-              <button onClick={() => handleDeletePlace(index)}>Delete</button>
-            </li>
-          ))}
-        </ul>
+
+
+        <h2 className="Itinerary-list">Ititnerary List</h2>
+        <table className="table-list">
+          <thead>
+            <tr>
+              <th className="place-name">Place Name</th>
+              <th className="place-action">Action</th>
+            </tr>
+          </thead>
+          <tbody className="list-tbody">
+            {selectedPlaces.map((place, index) => (
+              <tr key={index}>
+                <td className="list td">{place.name}</td>
+                <td className="list-delete">
+                  <button className="list-button" onClick={() => handleDeletePlace(index)}>Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
 }
 
 export default Explore;
+
+
+
+
