@@ -38,17 +38,56 @@
   }
 }
 
-.form-group {
+.seach-city {
+  margin-left: 55px;
+  background-color: orange;
+  color: black;
+  border-radius: 7px;
+  border-color: orange;
+  height: 50px;
+  width: 160px;
+  font-size: 18px;
+
+}
+
+.seach-city:hover {
+  color: white;
+}
+
+.search-place {
+  background-color: orange;
+  color: black;
+  border-radius: 7px;
+  border-color: orange;
+  height: 50px;
+  width: 160px;
+  font-size: 18px;
+}
+
+.search-place {
   display: flex;
-  margin-top: 50px;
-  margin: auto;
+  margin-top: -50px;
+  margin-left: 350px;
+
+}
+
+.search-place:hover {
+  color: white;
+}
+
+.form-group-row {
+  /* display: flex; */
+  margin-top: 150px;
+  /* margin: auto; */
   background: rgb(231, 233, 235, 0.7);
   width: 600px;
   height: auto;
   border-radius: 10px;
-  border: solid gainsboro 1px;
+  border: solid orange 1px;
+  margin-left: 450px;
   align-items: center;
   padding: 20px;
+
 }
 
 .title {
