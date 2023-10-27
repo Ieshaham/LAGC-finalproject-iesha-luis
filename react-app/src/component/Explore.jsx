@@ -1,12 +1,13 @@
-import React, { useContext, useState, useEffect } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import "../App.css";
+// Explore.js
 
-const backendHostUrl = `${process.env.REACT_APP_FIREBASE_FUNCTIONS_HOST}/geeks-firebase-72e6d/us-central1`;
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import NavBar from "./NavBar";
+import { Context } from '../Context';
 
 export default function Explore() {
   const navigate = useNavigate();
+  const { user } = useContext(Context);
 
   const goBack = () => {
     let path = `/`;
@@ -21,37 +22,63 @@ export default function Explore() {
   const routeChangetoGeolocation = () => {
     let path = `/geolocation`;
     navigate(path);
-  };
+  }; 
 
+  const routeChangetoPlacesearch = () => {
+    let path = `/placesearch`;
+    navigate(path);
+  };
   return (
-    <div className="form-group row">
-      <div>
-        <button className="Go-back-buttons-on-explore" onClick={goBack}>
-          &larr;Go back
-        </button>
-      </div>
-      <div>
-        <h1>Search your places</h1>
-      </div>
-      <div>
-        <p>
-          Here you could choose search by a specific City Name or you could get
-          more information about a specific place. Please choose the best
-          option for your search.
-        </p>
-      </div>
-      <div className="row">
+    <div>
+      <NavBar />
+      <div className="w6-col m4 l3">
+      <div className="explorepagediv">
         <div>
-          <button className="search-city" width="120px" onClick={routeChangetoGeolocation}>
-            Search by City
+    
+          <button className="Go-back-buttons-on-explore" onClick={goBack}>
+            &larr; Go back
           </button>
+         
         </div>
-        <div>
-          <button className="search-place" width="120px" onClick={routeChangetoList}>
-            Search by Place
-          </button>
+          <div className="scrollable-content">
+        <div className="form-group row">
+        
+          <div className="search-box">
+            <h1>Build Your Own Itinerary</h1>
+            <p>
+            Design a personalized itinerary by selecting attractions and landmarks
+            that match your interests, creating a unique travel experience.
+              
+            </p>
+            <button className="search-build" onClick={routeChangetoList}>
+              Create
+            </button>
+          </div>
+          
+          <div className="search-box2">
+            <h1>Explore Hotels</h1>
+            <p>
+            Discover hotels by inputting a location,
+            offering tailored options for your ideal trip.
+            </p>
+            <button className="search-city" onClick={routeChangetoGeolocation}>
+              Find Hotels
+            </button>
+          </div>
+          <div className="search-box3">
+            <h1>Explore Places</h1>
+            <p>
+            Discover restaurants and activities by inputting a location,
+            offering tailored options for your ideal trip.
+            </p>
+            <button className="search-places" onClick={routeChangetoPlacesearch}>
+              Find Places
+            </button>
+          </div>
+        </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

@@ -38,49 +38,36 @@
   }
 }
 
-.search-city {
-  margin-left: 150px;
-  background-color: orange;
-  color: black;
-  border-radius: 7px;
-  border-color: orange;
-  height: 50px;
-  width: 160px;
-  font-size: 18px;
-  margin-bottom: 5px;
-  
 
+/* Styles for .explorepagediv */
+body {
+  background-color: #001732;
 }
-
-.seach-city:hover {
-  color: white;
-}
-
-.search-place {
-  background-color: orange;
-  color: black;
-  border-radius: 7px;
-  border-color: orange;
-  height: 50px;
-  width: 160px;
-  font-size: 18px;
-  
-  margin-left: 150px;
-}
-
-/* .search-place {
+.explorepagediv {
+  background-color: #001732;
   display: flex;
-  margin-top: 50px;
-  margin: auto;
-  background: rgb(231, 233, 235, 0.7);
-  width: 600px;
-  height: auto;
-  border-radius: 10px;
-  border: solid orange 1px;
-  margin-left: 450px;
+  flex-direction: column;
   align-items: center;
-  padding: 20px;
-} */
+  justify-content: center;
+  color: white;
+  z-index: 1;
+  height: 100vh; 
+}
+
+/* Create a scrollable container for the content */
+.scrollable-content {
+  /* overflow-y: auto;  */
+  max-height: 80vh; /* Set a max height to allow for scrolling */
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .explorepagediv {
+    padding: 20px; /* Adjust padding for smaller screens */
+    height: 100vh; 
+  }
+}
+
 
 .title {
   font: bold;
@@ -91,6 +78,7 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 150px;
+  
 }
 
 .search {
@@ -101,97 +89,164 @@
   width: 400px;
 }
 
-.placestable {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.placestable2 {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.form-group2 {
-  margin-top: 50px;
-  margin: auto;
-}
-
-.placestable2 {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.form-group2 {
-  margin-top: 50px;
-  /* margin: auto; */
-
-  width: auto;
-  height: auto;
-  border-radius: 10px;
-  border: solid orange 1px;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background-color: rgb(250, 219, 176);
-  /* text-align: center; */
-}
-
-.resultsheader {
-  margin-top: 50px;
-}
-
-.pagecontent {
-  background: rgba(231, 233, 235, 0.5);
-  padding: 15px;
-  border-radius: 10px;
-}
-
-.gobutton {
-  color: black;
-  text-decoration: none;
-
-}
-
-.gobutton:hover {
+.search-city {
+  background-color: orange;
+  /* Use the orange color for buttons */
   color: white;
-  text-decoration: none;
-}
-
-.search-places {
-  background-color: orange;
-  height: 40px;
-  border-radius: 5px;
-  border-color: orange;
-}
-
-.Go-back-button {
-  background-color: orange;
-  height: 40px;
-  border-radius: 5px;
-  border-color: orange;
-
-}
-
-.form-group{
-  background-color: rgb(250, 219, 176);
-  width: 500px;
-  height: 315px;
-  margin-top: 150px;
-  margin-left: 400px;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 18px;
   border-radius: 10px;
+  margin-top: 10px;
 }
 
-.Go-back-buttons-on-explore{
+.search-city:hover {
+  background-color: #e76f51;
+  /* Sunset orange on hover */
+  color: white;
+}
+
+.search-build {
   background-color: orange;
-  height: 40px;
-  width:100px;
-  border-radius: 7px;
-  border-color: orange;
-  margin-top: 5px;
+  /* Use the orange color for buttons */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.search-build:hover {
+  background-color: #e76f51;
+  /* Sunset orange on hover */
+  color: white;
+}
+
+.search-box {
+  flex: 1;
+  padding: 25px;
+  border-radius: 10px;
+  margin: 60px;
+  background-color: rgba(148, 185, 217, 0.8);
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .search-box {
+    padding:2rem;
+    margin-top: 7rem;
+  
+  }}
+
+  .search-box2 {
+    flex: 1;
+    padding: 25px;
+    border-radius: 10px;
+    margin: 60px;
+    background-color: rgba(148, 185, 217, 0.8);
+    text-align: center;
+  }
+  @media (max-width: 768px) {
+    .search-box2 {
+      padding:2rem;
+        margin-top: 7rem;
+    
+    }}
+
+    .search-box3 {
+      flex: 1;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 60px;
+      background-color: rgba(148, 185, 217, 0.8);
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .search-box {
+        padding:2rem;
+        margin-top: 7rem;
+      
+      }}
+
+      .search-places {
+        background-color: orange;
+        /* Use the orange color for buttons */
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 18px;
+        border-radius: 10px;
+        margin-top: 10px;
+      }
+      
+      .search-places:hover {
+        background-color: #e76f51;
+        /* Sunset orange on hover */
+        color: white;
+      }
+
+/* Default styles for the "Go back" button in explore */
+.Go-back-buttons-on-explore {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 10px;
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .Go-back-buttons-on-explore {
+    padding: 8px 16px;
+    font-size: 16px;
+    top: 50px; /* Adjust the top margin for smaller screens */
+    left: 10px; /* Adjust the left margin for smaller screens */
+    
+  }
+}
+
+
+
+.Go-back-buttons-on-explore:hover {
+  background-color: #e76f51;
+/* Sunset orange on hover */
+color: white;
+}
+
+.explore-details-pages{
+  color:white;
+}
+
+.Go-back-button-on-geolocation{
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 10px;
+  margin-top: 5rem;
+  margin-left: 25px;
+}
+
+.search-places{
+  background-color: orange;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 10px;
+  
+}
+.table{
+  color:white;
 }

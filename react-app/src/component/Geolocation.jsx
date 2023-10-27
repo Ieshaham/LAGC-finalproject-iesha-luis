@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "../App.css";
+import NavBar from "./NavBar";
+// import Footer from "./Footer";
 
 export default function CityToLatLngConverter() {
   const [city, setCity] = useState("");
@@ -62,103 +64,108 @@ export default function CityToLatLngConverter() {
   };
 
   return (
-    <div className="form-group2">
-      <div className="pagecontent">
-   
-        <div name="header">
-          <h1>Search by City</h1>
-          <p>
-            Here you could search by and specific City. Please introduce the
-            city you are going to visit or want to search about.
-          </p>
-        </div>
-        <div className="search">
-          <input
-            type="text"
-            placeholder="Enter city name"
-            value={city}
-            onChange={handleCityChange}
-          />
+    <div className="explore-details-pages">
+      <NavBar />
+      <div className="form-group2">
+        <div className="pagecontent">
 
-          <button className="search-places" onClick={getLatLng}>
-            Search Places
-          </button>
-        </div>
-        <div>
-          <button className="Go-back-button" onClick={goBack}>
-            &larr;Go back
-          </button>
-        </div>
+          <div name="header">
+          <div>
+          <button className="Go-back-button-on-geolocation" onClick={goBack}>
+              &larr;Go back
+            </button>
+          </div>
+            <h1 className="geo-title">Search by City</h1>
+            <p className="geo-subtitle">
+              Here you could search by and specific City. Please introduce the
+              city you are going to visit or want to search about.
+            </p>
+          </div>
+          <div className="search">
+            <input
+              type="text"
+              placeholder="Enter city name"
+              value={city}
+              onChange={handleCityChange}
+            />
 
-        <div className="placestable">
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Place</th>
-                <th>Type of Place</th>
-                <th>Rating</th>
-                {/* <th>Details</th> */}
-                <th>More info</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentItems.map((item) => (
-                // {placesData.map((item) => (
-                <tr key={item.place_id}>
-                  <td className="tablename">
-                    {/*<div
+            <button className="search-places" onClick={getLatLng}>
+              Search Places
+            </button>
+          </div>
+        
+
+          <div className="placestable">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Place</th>
+                  <th>Type of Place</th>
+                  <th>Rating</th>
+                  {/* <th>Details</th> */}
+                  <th>More info</th>
+                </tr>
+              </thead>
+              <tbody>
+                {currentItems.map((item) => (
+                  // {placesData.map((item) => (
+                  <tr key={item.place_id}>
+                    <td className="tablename">
+                      {/*<div
                     dangerouslySetInnerHTML={{
                       __html: item.photos[0].html_attributions[0],
                     }}
                   ></div>*/}
-                    <div>{item.name}</div>
-                  </td>
-                  <td>
-                    <div>
-                      <img src={item.icon} width="20px" height="20px"></img>
-                    </div>
-                  </td>
-                  <td>
-                    <div>{item.rating}</div>
-                  </td>
-                  {/* <td>
+                      <div>{item.name}</div>
+                    </td>
+                    <td>
+                      <div>
+                        <img src={item.icon} width="20px" height="20px"></img>
+                      </div>
+                    </td>
+                    <td>
+                      <div>{item.rating}</div>
+                    </td>
+                    {/* <td>
                   <div>{item.vicinity}</div>
                 </td> */}
-                  <td>
-                    <button
-                      type="button"
-                      className="btn btn-secondary "
-                      data-bs-toggle="button"
-                    >
-                      <Link
-                        className="gobutton"
-                        to={`/ExploreDetail?place_id=${item.place_id}`}
+                    <td>
+                      <button
+                        type="button"
+                        className="btn btn-secondary "
+                        data-bs-toggle="button"
                       >
-                        Go &rarr;
-                      </Link>
-                    </button>
-                    {/* <ScrollToTop/>    */}
-                  </td>
-                </tr>
-                // ))}
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div className="pagination">
-          {Array.from({
-            length: Math.ceil(placesData.length / itemsPerPage),
-          }).map((_, index) => (
-            <button
-              key={index}
-              className={index + 1 === currentPage ? "active btn btn-secondary" : " btn btn-secondary"}
-              onClick={() => handlePageChange(index + 1)}
-            >
-              {index + 1}
-            </button>
-          ))}
+                        <Link
+                          className="gobutton"
+                          to={`/ExploreDetail?place_id=${item.place_id}`}
+                        >
+                          Go &rarr;
+                        </Link>
+                      </button>
+                      {/* <ScrollToTop/>    */}
+                    </td>
+                  </tr>
+                  // ))}
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="pagination">
+            {Array.from({
+              length: Math.ceil(placesData.length / itemsPerPage),
+            }).map((_, index) => (
+              <button
+                key={index}
+                className={index + 1 === currentPage ? "active btn btn-secondary" : " btn btn-secondary"}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
+      {/* <Footer /> */}
     </div>
   );
 }

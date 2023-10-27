@@ -17,7 +17,7 @@ const firebaseConfig = {
   storageBucket: "music-player-final-project.appspot.com",
   messagingSenderId: "226920662966",
   appId: "1:226920662966:web:b556085bc0ad517f436317",
-  measurementId: "G-VJ2MW5G87J",
+  measurementId: "G-VJ2MW5G87J"
 };
 
 const app = initializeApp(firebaseConfig);

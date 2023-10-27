@@ -1,97 +1,105 @@
-import { useEffect, useContext } from 'react';
-import { GoogleAuthProvider, getAuth, signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
+import React, { useEffect, useContext, useState } from 'react';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../index';
 import { Context } from '../Context';
 
-
 const provider = new GoogleAuthProvider();
 
-// provider.setCustomParameters({
-//   redirect_uri: 'https://elvishernandez-didactic-carnival-x5jgw56wqqwf9pvj-9099.preview.app.github.dev/'
-// })
-
 function Landingpage() {
-
   const { setUser } = useContext(Context);
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [generatedCountry, setGeneratedCountry] = useState('');
+
+  const countryNames = [
+    "Italy",
+    "Japan",
+    "Spain",
+    "France",
+    "Greece", "USA", "Canada", "Africa", "Brazil", "China", "Ireland", "Denmark", "Turkey", "Thailand", "Mexico", "Vietnam"
+  ];
+
+  function generateRandomCountry() {
+    const randomIndex = Math.floor(Math.random() * countryNames.length);
+    return countryNames[randomIndex];
+  }
 
   useEffect(() => {
+    // Set up interval to regenerate the country name every 5 seconds
+    const intervalId = setInterval(() => {
+      setGeneratedCountry(generateRandomCountry());
+    }, 2000);
 
-    (async () => {
-      try {
-        const res = await fetch(`${process.env.REACT_APP_FIREBASE_FUNCTIONS_HOST}/geeks-firebase-72e6d/us-central1/helloWorld`);
-        const text = await res.text();
+    // Initial generation
+    setGeneratedCountry(generateRandomCountry());
 
-        console.log(text);
-
-      }
-      catch (e) {
-        console.error(e);
-      }
-    })();
+    // Clean up the interval when the component unmounts
+    return () => clearInterval(intervalId);
   }, []);
+
   return (
     <div className="landingpage">
-    <div className="App">
-    <nav className='nav'>
+      <div className="title">Voyage<span className='hawk'>Hawk</span></div>
+      <div className="hamburger-icon" onClick={() => setIsNavOpen(!isNavOpen)}>
+        <div className="bar"></div>
+        <div className="bar"></div>
+        <div className="bar"></div>
+      </div>
+      <ul className={`nav-list ${isNavOpen ? 'active' : ''}`}>
+        <li><a href="/">Home</a></li>
+        <li><a href="/Explore">Explore</a></li>
+        <li><a href="/List">Build an Itinerary</a></li>
+        <li><a href="/Geolocation">Explore Hotels</a></li>
+        <li><a href="/Placesearch">Things to do</a></li>
+        <li><div className='signout' onClick={() => auth.signOut()}>Sign out</div></li>
+      </ul>
+      <div className='blue-block'>
+        <nav className="nav">
+          <div className="nav-tabs">
+            {/* Move the title here */}
+          </div>
+        </nav>
 
-<div className='title'>Voyage<span className='hawk'>Hawk</span></div>
-<div className="nav-tabs">
-<button className='explore-nav'> <a href="/Explore">Explore</a></button>
-<button className='login-button'> <a href="/">Login</a></button>
-  <button className='signout' onClick={() => auth.signOut()}>Sign out</button> 
-  </div>
-</nav>
-      <div className="slogans">
-      <p className='slogan'>Where your travel dreams take flight!</p>
-      <p className='bottom-slogan'>Your ultimate travel itinerary navigator</p>
-      <button className='signin' onClick={(e) => {
-        signInWithPopup(auth, provider)
-        .then(async (result) => {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-            // The signed-in user info.
-            const user = result.user;
-            console.log('token: ', token);
-            console.log('user: ', user);
+        <div className="slogans">
+          <p className='slogan'>
+            Explore <span className="generated-country">{generatedCountry}</span> 
+            </p>
+          <p className='sloganss'><em>Discover limitless horizons with Voyage Hawk.
+            Seamlessly plan immersive itineraries, from iconic landmarks to hidden treasures,
+            and set off on a voyage where your journey awaits.</em></p>
+          <div className='signin-login-buttons'>
+            <button className='login-button'> <a href="/">Login</a></button>
+            <button className='signin' onClick={(e) => {
+              signInWithPopup(auth, provider)
+              .then(async (result) => {
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                const user = result.user;
+                console.log('token: ', token);
+                console.log('user: ', user);
+                
+                const res = await fetch(`${process.env.REACT_APP_FIREBASE_FUNCTIONS_HOST}/geeks-firebase-72e6d/us-central1/signUpOrSigninUser`, {
+                  method: 'post',
+                  body: JSON.stringify({ email: user.email }),
+                  headers: {
+                    'Content-Type': 'application/json'
+                  }
+                });
+                
+                const dbUser = await res.json();
+                console.log('data: ', dbUser);
+              }).catch((error) => {
+                console.error(error);
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                const email = error.customData.email;
+                const credential = GoogleAuthProvider.credentialFromError(error);
+              });
+            }}>Sign In</button>
+          </div>
             
-            const res = await fetch(`${process.env.REACT_APP_FIREBASE_FUNCTIONS_HOST}/geeks-firebase-72e6d/us-central1/signUpOrSigninUser`, {
-              method: 'post',
-              body: JSON.stringify({ email: user.email }),
-              headers: {
-                'Content-Type': 'application/json'
-              }
-            });
-            
-            const dbUser = await res.json();
-            
-            
-            console.log('data: ', dbUser);
-            // setUser(dbUser.data);
-            // IdP data available using getAdditionalUserInfo(result)
-            // ...
-          }).catch((error) => {
-            console.error(error);
-            // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // The email of the user's account used.
-            const email = error.customData.email;
-            // The AuthCredential type that was used.
-            const credential = GoogleAuthProvider.credentialFromError(error);
-            // ...
-          });
-          // createUserWithEmailAndPassword(auth, "elvishernandeztheone@gmail.com", "password")
-          //   .then((res) => console.log(res))
-          //   .catch((err) => console.error(err))
-        }}>Sign In</button>
-
-     
-
         </div>
- 
       </div>
-      </div>
+    </div>
   );
 }
 
