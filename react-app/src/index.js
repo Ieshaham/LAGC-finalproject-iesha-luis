@@ -6,9 +6,9 @@ import reportWebVitals from "./reportWebVitals";
 
 import { initializeApp } from "firebase/app";
 import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
-import { getAuth, connectAuthEmulator } from 'firebase/auth';
-import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
-import ContextProvider from "./Context";
+import { getAuth, connectAuthEmulator } from "firebase/auth";
+import { connectFirestoreEmulator, getFirestore } from "firebase/firestore";
+// import Footer from "./component/Footer";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBkZdDeKGgnKXzAu-RWrDGQAQBG-x3D334",
@@ -26,13 +26,16 @@ export const auth = getAuth(app);
 export const firestore = getFirestore(app);
 connectFunctionsEmulator(functions, "127.0.0.1", 5001);
 connectAuthEmulator(auth, process.env.REACT_APP_FIREBASE_AUTH_HOST);
-connectFirestoreEmulator(firestore, process.env.REACT_APP_FIREBASE_FIRESTORE_HOST);
+connectFirestoreEmulator(
+  firestore,
+  process.env.REACT_APP_FIREBASE_FIRESTORE_HOST
+);
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <ContextProvider>
     <App />
-  </ContextProvider>
+ 
 );
 
 // If you want to start measuring performance in your app, pass a function

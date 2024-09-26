@@ -1,5 +1,4 @@
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -7,7 +6,979 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Set the background image and styles for the landing page */
+.landingpage {
+  background-image: url("https://4kwallpapers.com/images/wallpapers/coastline-aerial-view-above-clouds-seascape-mountains-macos-5120x2880-3995.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
 }
+
+/* Style the sign-in button */
+.signin {
+  background-color: orange;
+  color: black;
+  height: 3rem;
+  width: 8rem;
+  border-radius: 10px;
+  border: black 1px solid;
+  font-size: 1.5rem;
+
+}
+
+.signin:hover {
+  background-color: #e76f51;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .signin {
+    font-size: 1.2rem;
+  }
+}
+
+/* Position the app relative to its container */
+.app {
+  position: relative;
+}
+
+/* Style the slogans and generated country */
+.sloganss {
+  color: white;
+  font-size: 1rem;
+  margin: 3rem 0;
+  text-align: left;
+
+
+}
+
+
+
+.slogan {
+  color: white;
+  font-size: 5rem;
+  margin-left: 0.9rem;
+
+}
+
+.generated-country {
+  animation: colorChange 6s infinite alternate;
+  font-size: 5rem;
+  color: transparent;
+  /* margin: 1rem; */
+  height: 7rem;
+  /* Set a fixed height for the container */
+  overflow: hidden;
+  /* Hide overflow if the text exceeds the container's height */
+  display: inline-block;
+  /* Display as inline-block to prevent line breaks */
+  white-space: nowrap;
+  /* Prevent text from wrapping */
+}
+
+/* Keyframe animation for generated country text color change */
+@keyframes colorChange {
+  to {
+    color: orange;
+  }
+}
+
+
+/* Style the title */
+.title {
+  color: white;
+  font-size: 25px;
+  text-align: left;
+  padding: 0;
+  margin-left: 10px;
+}
+
+/* Style the navigation bar */
+.nav {
+  background-color: rgb(0, 35, 63);
+  height: 2px;
+}
+
+.nav-tabs {
+  border: none;
+}
+
+/* Style the sign-in/login buttons */
+.signin-login-buttons {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  margin-left: 1rem;
+  /* Reduced left margin for smaller screens */
+}
+
+.login-button {
+  background-color: orange;
+  color: black;
+  height: 3rem;
+  min-width: 8rem;
+  /* Use min-width to ensure the button adapts to content */
+  border-radius: 10px;
+  border: black 1px solid;
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  /* Reduced right margin for smaller screens */
+  width: 8rem;
+
+
+}
+
+/* Adjust styles for smaller screens (e.g., mobile devices) */
+@media (max-width: 768px) {
+  .signin-login-buttons {
+    margin-left: 0.5rem;
+    /* Further reduced left margin */
+
+  }
+
+  .login-button {
+    height: 3rem;
+    min-width: 7rem;
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+    /* Further reduced right margin */
+  }
+}
+
+/* Adjust styles for even smaller screens (e.g., very narrow mobile devices) */
+@media (max-width: 480px) {
+  .signin-login-buttons {
+    margin-left: 0.2rem;
+    /* Further reduced left margin */
+  }
+
+
+}
+
+
+/* Style the Hawk text with orange color */
+.hawk {
+  color: orange;
+  padding: 0;
+}
+
+
+.login-button a {
+  text-decoration: none;
+  color: black;
+}
+
+/* .login-button .whitebox {
+  text-decoration: none;
+  color: black;
+} */
+
+.login-button a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+/* Hamburger menu icon styles */
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+}
+
+.bar {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  margin: 3px 0;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  transform-origin: right;
+}
+
+.hamburger-icon:hover .bar {
+  background-color: orange;
+}
+
+/* Initially, hide the nav-list off-screen to the right */
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  right: -25%;
+  /* Start off-screen to the right */
+  width: 25%;
+  height: 100vh;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease;
+  /* Slide in from the right transition */
+}
+
+/* Adjust the active state to bring the nav-list on screen */
+.nav-list.active {
+  right: 0;
+  /* Slide in from the right to cover the screen */
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav-list li {
+  padding: 10px;
+  border-bottom: 1px solid orange;
+}
+.nav-list li:hover {
+  background-color: orange;
+}
+
+/* Add the blue block style */
+.blue-block {
+  background-color: rgba(0, 35, 63, 0.8);
+  width: 100%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3rem;
+  /* Increased padding for smaller screens */
+  height: auto;
+  position: relative;
+  top: 0;
+  right: 0;
+  transform: none;
+  transition: transform 0.3s ease;
+}
+
+/* Tablet styles (for screens wider than 768px) */
+@media (min-width: 768px) {
+  .blue-block {
+    padding: 5rem;
+    height: 35rem;
+
+  }
+}
+
+/* Desktop styles (for screens wider than 1024px) */
+@media (min-width: 1024px) {
+  .blue-block {
+    width: 35%;
+  }
+}
+
+/* LANDING PAGE STYLE ENDS */
+
+.exploredetail {
+  background-color: white;
+}
+
+
+.placename {
+  height: 300px;
+  width: 300px;
+}
+
+/* #map {
+  width: 100%;
+  height: 700px;
+  /* margin-top: 2px; */
+*/ .loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#autocomplete-input {
+  height: 40px;
+  width: 480px;
+  margin-top: 20px;
+  margin-left: 30%;
+  border-color: orange;
+  border-radius: 5px;
+}
+
+
+
+/* App.css or your custom CSS file */
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 565px;
+}
+
+
+
+.input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.list-delete {
+  border: 2px solid orange;
+  text-align: center;
+}
+
+.Go-back-buttons {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-left: 25px;
+}
+
+.Go-back-buttons:hover {
+  background-color: #e76f51;
+  color: white;
+}
+
+
+
+/* DETAILS PAGE */
+
+.itinerary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.itinerary-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  position: relative;
+}
+
+.itinerary-item h3 {
+  margin: 0;
+}
+
+.delete-button {
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.confirmation-modal {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.confirm-delete,
+.cancel-delete {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+/* DETAIL PAGE ENDS */
+
+/* SAVED LIST START */
+
+.save-list-button {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.save-list-button:hover {
+  background-color: #e76f51;
+  color: white;
+}
+
+.link-to-saved-list {
+  margin-top: 20px;
+  text-decoration: none;
+  color: #61dafb;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.link-to-saved-list:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.list-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-name-input {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.list-item {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.empty-itinerary {
+  text-align: center;
+  margin-top: 20px;
+  color: white;
+}
+
+.current-date-time {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* Additional styles for your buttons or other elements can be added here. */
+
+
+
+/* SAVED LIST ENDS */
+
+
+/* LIST PAGE CSS STARTS  */
+
+.list-page {
+  
+  background-color: #001732;
+  min-height: 100vh;
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #333333;
+  /* z-index: 1; */
+}
+
+.list-title {
+  font-weight: bold;
+  font-size: 35px;
+  color: white;
+  margin-top: 9rem;
+}
+
+@media (max-width: 768px) {
+  .list-title {
+    font-size: 30px;
+  }
+}
+
+/* Default styles for the "Go back" button */
+.go-back-button-on-list {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 10px;
+  position: absolute;
+  top: 150px;
+  left: 20px;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .go-back-button-on-list {
+    padding: 8px 16px;
+    font-size: 16px;
+    top: 50px;
+    /* Adjust the top margin for smaller screens */
+    left: 10px;
+    /* Adjust the left margin for smaller screens */
+  }
+}
+
+
+.go-back-button-on-list:hover {
+  background-color: #e76f51;
+  /* Sunset orange on hover */
+  color: white;
+}
+
+/* Default styles for the search box */
+.search-box-on-list {
+  display: flex;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  /* Add other styles as needed */
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .search-box-on-list {
+    max-width: 100%;
+    padding: 0 20px;
+    /* Add padding to adjust spacing as needed */
+  }
+
+  /* Adjust the input width for smaller screens if necessary */
+  #autocomplete-input {
+    width: 100%;
+  }
+}
+
+
+.input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+
+}
+
+.autocomplete-suggestions {
+  max-height: 150px;
+  overflow-y: auto;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+
+}
+
+.suggestion {
+  cursor: pointer;
+  padding: 5px;
+}
+
+.table-list {
+  width: 90%;
+  color: white;
+  margin-left: 40px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .table-list {
+    margin: auto;
+  }
+}
+
+.place-name {
+  text-align: center;
+  /* padding-left: 20px; */
+  font-size: 20px;
+}
+
+.place-action {
+  text-align: center;
+  font-size: 20px;
+}
+
+.list-td {
+  padding: 5px;
+
+}
+
+
+.list-delete {
+  text-align: center;
+  border: none;
+}
+
+.list-button {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.list-button:hover {
+  background-color: #e76f51;
+  color: white;
+}
+
+.save-list-button {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 10px;
+  margin-top: 10rem;
+}
+
+.save-list-button:hover {
+  background-color: #e76f51;
+  /* Sunset orange on hover */
+  color: white;
+}
+
+.link-to-saved-list {
+  color: #61dafb;
+  text-decoration: none;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.link-to-saved-list:hover {
+  text-decoration: underline;
+}
+
+#autocomplete-input {
+  margin-left: 30px;
+}
+
+/* 
+LIST PAGE ENDS */
+
+/* SAVED LIST PAGE STARTS*/
+/* saved.css */
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #001732;
+}
+
+.title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.list-container {
+  border: 1px solid rgba(148, 185, 217, 0.8);
+  padding: 20px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.custom-name-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 5px;
+  border: 1px solid rgba(148, 185, 217, 0.8);
+  border-radius: 3px;
+}
+
+
+.list-item {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.delete-button {
+  background-color: #e76f51;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.delete-button:hover {
+  background-color: #d3391e;
+}
+
+.empty-itinerary {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.empty-itinerary h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.empty-itinerary p {
+  font-size: 16px;
+  color: #666;
+}
+
+.custom-name-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: black;
+}
+
+.list-titl-on-saved {
+  font-size: 10px;
+  margin-bottom: 10px;
+  color: #000;
+  /* Set a specific text color, like black (#000) */
+}
+
+/* Default styles for the "Go back" button in Saved component */
+.Go-back-button-on-saved {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 10px;
+  position: absolute;
+  top: 150px;
+  left: 20px;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .Go-back-button-on-saved {
+    padding: 8px 16px;
+    font-size: 16px;
+    top: 62px;
+    /* Adjust the top margin for smaller screens */
+    left: 10px;
+    /* Adjust the left margin for smaller screens */
+  }
+}
+
+/* EXPLORE DETAILS PAGE START */
+
+.explore-details-pages {
+  background-color: #001732
+}
+
+.geo-title {
+  margin-left: 35rem;
+  margin-top: 3rem;
+}
+
+.geo-subtitle {
+  margin-left: 15rem;
+}
+
+/* placesarch page starts here */
+
+.place-search-page {
+  background-color: #001732;
+  color: white;
+  /* Text color is set to white for better visibility on a dark background */
+  font-family: Arial, sans-serif;
+  /* Change the font family as needed */
+  padding: 20px;
+
+}
+
+/* Styles for the "Go back" button */
+.go-back-button-on-list {
+  background-color: orange;
+  /* Button background color */
+  color: white;
+  /* Text color of the button */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+/* Title styles */
+.search-title {
+  font-size: 26px;
+  margin: 20px 30rem;
+}
+
+/* Styles for category buttons */
+.category-selection {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 20rem;
+}
+
+.category-button {
+  background-color: #3a3a3a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.selected-category {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Input styles */
+.input {
+  width: 60%;
+  padding: 10px;
+  margin: 10px 9rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+
+}
+.input-on-search{
+  margin-left:15rem;
+  width: 50%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+
+}
+
+/* Search button styles */
+.search-button {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  margin-left: 3rem;
+}
+
+.search-button:hover {
+  background-color: #e76f51;
+  /* Sunset orange on hover */
+  color: white;
+}
+
+
+/* Styles for the selected categories section */
+.selected-categories {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.place-results-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.place-result {
+  width: calc(33.33% - 20px); /* 20px accounts for margin */
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #000; /* Border style */
+}
+
+.place-info {
+  padding: 10px;
+  color:black;
+}
+
+/* Adjust the image size to fit the container */
+.place-result img {
+  width: 100%;
+  height: 15rem;
+  /* Maintain image aspect ratio */
+  border-radius: 5px;
+}
+
+.place-name {
+  font-size: 16px;
+  width: 20rem;
+
+}
+
+.go-back-button-on-placesearch {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 10px;
+  position: absolute;
+  top: 105px;
+  left: 20px;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .go-back-button-on-placesearch {
+    padding: 8px 16px;
+    font-size: 16px;
+    top: 50px;
+    /* Adjust the top margin for smaller screens */
+    left: 10px;
+    /* Adjust the left margin for smaller screens */
+  }
+}
+
+
+.go-back-button-on-placesearch:hover {
+  background-color: #e76f51;
+  /* Sunset orange on hover */
+  color: white;
+}
+
